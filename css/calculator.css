@@ -1,0 +1,114 @@
+/* ===== Mérida AC BTU & Tonnage Calculator — Clean Luxury Tech ===== */
+.calc{
+  padding:var(--section-py) 0;
+  background:linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  position:relative;border-top:1px solid rgba(0,98,204,0.1);
+}
+.calc::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 70% 30%,rgba(0,184,255,0.05),transparent 70%);
+  pointer-events:none;
+}
+.calc__container{
+  max-width:var(--max-w);margin:0 auto;padding:0 var(--container-px);position:relative;
+}
+.calc__grid{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:start;
+}
+
+/* Card Container */
+.calc__card{
+  background:#FFFFFF;
+  border:1px solid rgba(0,98,204,0.14);border-radius:20px;
+  padding:2.25rem;box-shadow:0 12px 35px rgba(9,26,68,0.06);position:relative;overflow:hidden;
+}
+
+/* Inputs */
+.calc__field{margin-bottom:1.75rem}
+.calc__label-wrap{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem}
+.calc__label{font-size:0.9rem;font-weight:700;color:#091124}
+.calc__val-bubble{
+  font-family:var(--font-mono);font-size:1.15rem;font-weight:800;
+  color:#0062CC;background:rgba(0,98,204,0.08);
+  padding:0.25rem 0.65rem;border-radius:8px;border:1px solid rgba(0,98,204,0.2);
+}
+
+/* Slider */
+.calc__slider{
+  width:100%;height:8px;border-radius:4px;outline:none;
+  background:#E2E8F0;cursor:pointer;
+  -webkit-appearance:none;appearance:none;position:relative;
+}
+.calc__slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:24px;height:24px;border-radius:50%;
+  background:#0062CC;border:3px solid #FFFFFF;
+  box-shadow:0 2px 10px rgba(0,98,204,0.4);cursor:grab;
+  transition:transform 0.15s;
+}
+.calc__slider::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.2)}
+.calc__slider-ticks{
+  display:flex;justify-content:space-between;font-size:0.72rem;
+  color:#64748B;font-family:var(--font-mono);margin-top:0.45rem;
+}
+
+/* Choice Option Chips */
+.calc__options{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+.calc__opt{
+  display:flex;flex-direction:column;gap:0.3rem;
+  padding:0.95rem 1.1rem;border-radius:12px;
+  background:#F8FAFC;border:1px solid rgba(0,98,204,0.14);
+  cursor:pointer;transition:all var(--dur);text-align:left;
+}
+.calc__opt:hover{border-color:#0062CC;background:rgba(0,98,204,0.04)}
+.calc__opt.is-active{
+  border-color:#0062CC;background:rgba(0,98,204,0.08);
+  box-shadow:0 4px 14px rgba(0,98,204,0.12);
+}
+.calc__opt strong{font-size:0.88rem;color:#091124}
+.calc__opt span{font-size:0.75rem;color:#475569}
+
+/* Result Panel (Signature Royal Cobalt High-Contrast Theme) */
+.calc__result{
+  background:linear-gradient(135deg, #071B38 0%, #0047AB 50%, #0066FF 100%);
+  border-radius:20px;
+  padding:2.25rem;box-shadow:0 16px 45px rgba(0,71,171,0.25);position:relative;overflow:hidden;
+  color:#FFFFFF;
+}
+.calc__badge{
+  display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:#FFFFFF;background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);padding:0.35rem 0.85rem;border-radius:20px;
+  margin-bottom:1.25rem;backdrop-filter:blur(8px);
+}
+.calc__ton-num{
+  font-family:var(--font-mono);font-weight:800;font-size:clamp(3rem,6vw,4.5rem);
+  line-height:1;color:#FFFFFF;text-shadow:0 4px 20px rgba(0,0,0,0.3);margin-bottom:0.25rem;
+}
+.calc__btu-label{font-size:1.15rem;font-weight:700;color:#38E5FF;margin-bottom:1.5rem}
+
+.calc__specs-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;
+  padding:1.25rem 0;border-top:1px solid rgba(255,255,255,0.15);border-bottom:1px solid rgba(255,255,255,0.15);
+  margin-bottom:1.5rem;
+}
+.calc__spec-item small{display:block;font-size:0.68rem;text-transform:uppercase;color:rgba(255,255,255,0.7);letter-spacing:0.05em}
+.calc__spec-item strong{font-family:var(--font-mono);font-size:0.95rem;color:#FFFFFF}
+
+.calc__savings-box{
+  background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.4);
+  border-radius:12px;padding:0.95rem 1.1rem;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.85rem;
+}
+.calc__savings-icon{
+  width:34px;height:34px;border-radius:50%;background:#25D366;
+  color:#FFFFFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.calc__savings-text p{font-size:0.78rem;color:#FFFFFF;margin:0}
+.calc__savings-text strong{color:#38E5FF}
+
+.calc__actions{display:flex;flex-direction:column;gap:0.85rem}
+
+@media(max-width:900px){
+  .calc__grid{grid-template-columns:1fr}
+}

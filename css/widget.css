@@ -1,0 +1,105 @@
+/* ===== Floating WhatsApp Smart Widget — Clean Luxury Tech ===== */
+.wa-widget{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+  font-family:var(--font-sans);
+}
+
+/* Floating Trigger Button */
+.wa-widget__btn{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 20px;border-radius:30px;
+  background:#25D366;color:#ffffff;
+  box-shadow:0 8px 30px rgba(37,211,102,0.4),0 2px 8px rgba(0,0,0,0.1);
+  border:none;cursor:pointer;font-weight:700;font-size:0.9rem;
+  transition:all var(--dur) var(--ease-spring);position:relative;
+}
+.wa-widget__btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 12px 36px rgba(37,211,102,0.55);
+}
+.wa-widget__btn svg{width:24px;height:24px;fill:currentColor}
+
+.wa-widget__pulse{
+  position:absolute;inset:-4px;border-radius:34px;
+  border:2px solid #25d366;opacity:0.6;
+  animation:waPulse 2.5s infinite;pointer-events:none;
+}
+@keyframes waPulse{
+  0%{transform:scale(0.95);opacity:0.8}
+  70%{transform:scale(1.15);opacity:0}
+  100%{transform:scale(1.15);opacity:0}
+}
+
+/* Status pill on button */
+.wa-widget__status{
+  display:flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:600;
+  background:rgba(0,0,0,0.2);padding:3px 8px;border-radius:12px;
+}
+.wa-widget__status-dot{
+  width:7px;height:7px;border-radius:50%;background:#ffffff;
+  animation:pulseDot 1.8s infinite;
+}
+
+/* Expanded Card */
+.wa-widget__card{
+  width:320px;max-width:calc(100vw - 32px);
+  background:#FFFFFF;
+  border:1px solid rgba(0,98,204,0.18);border-radius:20px;
+  box-shadow:0 20px 50px rgba(9,26,68,0.15);
+  overflow:hidden;transform-origin:bottom right;
+  opacity:0;visibility:hidden;transform:scale(0.85) translateY(20px);
+  transition:all var(--dur) var(--ease-spring);
+}
+.wa-widget__card.is-open{
+  opacity:1;visibility:visible;transform:scale(1) translateY(0);
+}
+
+/* Card Header */
+.wa-widget__card-head{
+  background:linear-gradient(135deg,#071B38 0%,#0052CC 100%);
+  padding:16px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid rgba(0,98,204,0.15);position:relative;
+}
+.wa-widget__avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,#00B8FF,#0062CC);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.1rem;color:#ffffff;
+  border:2px solid #ffffff;box-shadow:0 0 12px rgba(0,98,204,0.3);
+}
+.wa-widget__info h4{font-size:0.95rem;font-weight:700;color:#ffffff;margin:0}
+.wa-widget__info p{font-size:0.75rem;color:#BAE6FD;margin:2px 0 0}
+
+.wa-widget__close{
+  position:absolute;top:14px;right:14px;background:none;border:none;
+  color:#ffffff;opacity:0.8;cursor:pointer;padding:4px;
+}
+.wa-widget__close:hover{opacity:1}
+
+/* Card Body */
+.wa-widget__body{padding:16px;background:#FFFFFF}
+.wa-widget__bubble{
+  background:#F1F5F9;border:1px solid rgba(0,98,204,0.1);
+  border-radius:12px 12px 12px 2px;padding:12px 14px;margin-bottom:14px;
+  font-size:0.82rem;line-height:1.5;color:#091124;
+}
+.wa-widget__quick-actions{display:flex;flex-direction:column;gap:8px}
+.wa-widget__action-btn{
+  display:flex;align-items:center;gap:10px;width:100%;
+  padding:10px 14px;border-radius:10px;text-align:left;
+  background:#F8FAFC;border:1px solid rgba(0,98,204,0.14);
+  color:#091124;font-size:0.84rem;font-weight:600;
+  transition:all var(--dur);cursor:pointer;text-decoration:none;
+}
+.wa-widget__action-btn:hover{
+  background:#25D366;color:#ffffff;border-color:#25D366;
+  transform:translateX(3px);box-shadow:0 4px 16px rgba(37,211,102,0.3);
+}
+
+@media(max-width:768px){
+  .wa-widget{bottom:16px;right:16px}
+  .wa-widget__btn span.wa-widget__text{display:none}
+  .wa-widget__btn{padding:12px;border-radius:50%}
+  .wa-widget__status{display:none}
+}

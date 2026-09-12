@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH Servicios Técnicos | Climas, Lavadoras y Refrigeración en Cárdenas, Tabasco</title>
+    <meta name="description" content="Técnicos especialistas en aire acondicionado, lavadoras y refrigeración en Cárdenas, Tabasco y municipios conurbados. Instalación profesional, mantenimiento profundo y venta de equipos. WhatsApp: 937-103-7277.">
+    <meta name="theme-color" content="#0062CC">
+    <link rel="icon" type="image/svg+xml" href="assets/emblem-gh.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=25">
+    <link rel="stylesheet" href="css/loader.css?v=25">
+    <link rel="stylesheet" href="css/snow.css?v=25">
+    <link rel="stylesheet" href="css/nav.css?v=25">
+    <link rel="stylesheet" href="css/hero.css?v=25">
+    <link rel="stylesheet" href="css/stats.css?v=25">
+    <link rel="stylesheet" href="css/services.css?v=25">
+    <link rel="stylesheet" href="css/brands.css?v=25">
+    <link rel="stylesheet" href="css/catalog.css?v=25">
+    <link rel="stylesheet" href="css/calculator.css?v=25">
+    <link rel="stylesheet" href="css/timeline.css?v=25">
+    <link rel="stylesheet" href="css/testimonials.css?v=25">
+    <link rel="stylesheet" href="css/faq.css?v=25">
+    <link rel="stylesheet" href="css/contact.css?v=25">
+    <link rel="stylesheet" href="css/footer.css?v=25">
+    <link rel="stylesheet" href="css/widget.css?v=25">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+    <!-- Canvas de Nieve y Escarcha Polar -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- ===== LOADER ===== -->
+    <div class="loader" id="loader" aria-label="Cargando sitio">
+        <canvas id="loader-canvas" class="loader__canvas"></canvas>
+        <div class="loader__content">
+            <div class="loader__brand" id="loader-brand">
+                <div class="loader__brand-mark">
+                    <img src="assets/emblem-gh.svg" width="300" height="195" alt="GH Servicios Técnicos" class="loader__brand-img">
+                </div>
+                <h2 class="loader__brand-name">GH SERVICIOS TÉCNICOS</h2>
+                <p class="loader__brand-slogan">Cárdenas, Tabasco · Venta · Instalación · Mantenimiento</p>
+            </div>
+            <div class="loader__scene">
+                <div class="loader__thermo">
+                    <div class="loader__tube">
+                        <div class="loader__tube-glass"></div>
+                        <div class="loader__mercury" id="loader-mercury"></div>
+                        <div class="loader__tube-frost" id="loader-tube-frost"></div>
+                        <div class="loader__scale">
+                            <span data-t="40°"></span>
+                            <span data-t="30°"></span>
+                            <span data-t="20°"></span>
+                            <span data-t="16°"></span>
+                        </div>
+                    </div>
+                    <div class="loader__bulb" id="loader-bulb">
+                        <div class="loader__bulb-glow"></div>
+                    </div>
+                </div>
+                <div class="loader__readout">
+                    <div class="loader__readout-temp">
+                        <span class="loader__readout-num" id="loader-temp">40</span>
+                        <span class="loader__readout-unit">°C</span>
+                    </div>
+                    <span class="loader__readout-label" id="loader-status">Enfriando Cárdenas, Tab…</span>
+                </div>
+            </div>
+        </div>
+        <div class="loader__ice-overlay" id="loader-frost"></div>
+    </div>
+
+    <!-- ===== NAV ===== -->
+    <header class="nav" id="main-nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="GH Servicios Técnicos — Inicio">
+                <div class="nav__logo-svg-wrap">
+                    <img src="assets/emblem-gh.svg" width="46" height="30" alt="GH Logo" class="nav__logo-img">
+                </div>
+                <div class="nav__logo-text">
+                    <span class="nav__logo-brand">GH <span class="grad-text">SERVICIOS TÉCNICOS</span></span>
+                    <span class="nav__logo-sub">Cárdenas, Tabasco</span>
+                </div>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link is-active">Inicio</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="equipos.html" class="nav__link">Catálogo Equipos</a>
+                <a href="calculadora.html" class="nav__link">Calculadora BTU</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="contacto.html" class="nav__link">Contacto</a>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="sound-toggle-btn" aria-label="Activar o silenciar sonido" title="Sonido activado">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"/></svg>
+                </button>
+                <a href="https://wa.me/529371037277?text=Hola%20GH%20Servicios%20T%C3%A9cnicos%2C%20quiero%20cotizar" class="nav__cta-wa" target="_blank" rel="noopener">
+                    <span>💬 937-103-7277 | Cotizar</span>
+                </a>
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+        <nav aria-label="Menú móvil">
+            <a href="index.html" class="nav__mob-link">Inicio</a>
+            <a href="servicios.html" class="nav__mob-link">Servicios</a>
+            <a href="equipos.html" class="nav__mob-link">Catálogo Equipos</a>
+            <a href="calculadora.html" class="nav__mob-link">Calculadora BTU</a>
+            <a href="nosotros.html" class="nav__mob-link">Nosotros y Garantía</a>
+            <a href="contacto.html" class="nav__mob-link">Contacto</a>
+            <a href="https://wa.me/529371037277?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20de%20aire%20acondicionado" class="btn btn--primary btn--full" target="_blank" rel="noopener">Cotizar por WhatsApp (937-103-7277)</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero__bg" id="hero-bg"></div>
+            <div class="frost-ambient"></div>
+            <div class="hero__vent-texture" aria-hidden="true"></div>
+            <div class="hero__container">
+                <div class="hero__text">
+                    <div class="hero__badge anim-hero" data-delay="0">
+                        <span class="hero__badge-dot"></span>
+                        TÉCNICO ESPECIALISTA · CALIDAD Y SERVICIO GARANTIZADO
+                    </div>
+                    <h1 class="hero__title anim-hero" data-delay="1" id="hero-title">Con GH, tú controlas el calor</h1>
+                    <p class="hero__subtitle anim-hero" data-delay="2" id="hero-subtitle">Venta e instalación de minisplits, lavadoras y refrigeración, con bomba de vacío y mantenimiento experto en Cárdenas, Tabasco y municipios conurbados.</p>
+                    
+                    <div class="hero__ctas anim-hero" data-delay="3">
+                        <a href="contacto.html" class="btn btn--primary">Solicitar cotización</a>
+                        <a href="https://wa.me/529371037277?text=Hola%2C%20necesito%20servicio%20t%C3%A9cnico%20o%20cotizaci%C3%B3n%20en%20C%C3%A1rdenas%2C%20Tabasco" class="btn btn--wa" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp: 937-103-7277
+                        </a>
+                    </div>
+
+                    <!-- Widget de Contraste Térmico -->
+                    <div class="climate-contrast-card anim-hero" data-delay="3">
+                        <div class="climate-side climate-side--hot">
+                            <div class="climate-side__icon">☀️</div>
+                            <div class="climate-side__info">
+                                <span class="climate-side__place">Cárdenas Exterior</span>
+                                <span class="climate-side__temp">42°C</span>
+                                <span class="climate-side__desc">Bochorno de Tabasco</span>
+                            </div>
+                        </div>
+                        <div class="climate-divider">
+                            <span class="climate-divider__arrow">➔</span>
+                            <small>SOLUCIÓN</small>
+                        </div>
+                        <div class="climate-side climate-side--cool">
+                            <div class="climate-side__icon">❄️</div>
+                            <div class="climate-side__info">
+                                <span class="climate-side__place">Interior con GH</span>
+                                <span class="climate-side__temp">21°C</span>
+                                <span class="climate-side__desc">Confort Ártico Polar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tags de beneficios -->
+                    <div class="hero-features-bar anim-hero" data-delay="4">
+                        <span class="hero-feature-tag"><span>🛡️</span> Garantía 100% por Escrito</span>
+                        <span class="hero-feature-tag"><span>⚡</span> Ahorro hasta 65% CFE</span>
+                        <span class="hero-feature-tag"><span>🚚</span> Instalación Express 24h</span>
+                    </div>
+                </div>
+
+                <div class="hero__dial-wrap anim-hero" data-delay="4">
+                    <button class="hero__sound-btn" id="hero-sound-toggle" aria-label="Activar sonido" title="Sonido">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"/></svg>
+                    </button>
+                    <div class="hero__dial" id="hero-dial" role="slider" aria-label="Termostato interactivo" aria-valuemin="16" aria-valuemax="30" aria-valuenow="22" tabindex="0">
+                        <svg class="hero__dial-svg" id="dialSvg" viewBox="0 0 400 400"></svg>
+                        <div class="hero__dial-center">
+                            <span class="hero__dial-temp" id="dialTempDisplay">22</span><span class="hero__dial-unit">°C</span>
+                            <span class="hero__dial-mode" id="dialModeDisplay">Confort ideal</span>
+                        </div>
+                    </div>
+                    <div class="hero__presets" id="dial-presets">
+                        <button class="hero__preset" data-temp="16" aria-label="Ajustar a 16 grados polar">❄️ 16° Polar</button>
+                        <button class="hero__preset is-active" data-temp="22" aria-label="Ajustar a 22 grados confort">✨ 22° Confort</button>
+                        <button class="hero__preset" data-temp="26" aria-label="Ajustar a 26 grados ecológico">🌱 26° Eco</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BRANDS MARQUEE (Zero Overlap) ===== -->
+        <section class="brands" id="marcas" aria-label="Marcas autorizadas y certificadas">
+            <div class="brands__wrap">
+                <div class="brands__header">
+                    <span class="brands__label">EQUIPOS AUTORIZADOS · INSTALACIÓN Y REFACCIONES ORIGINALES</span>
+                </div>
+                <div class="brands__track-container">
+                    <div class="brands__track">
+                        <!-- SET 1 -->
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/mirage.png" alt="Mirage" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">AUTORIZADO // TAB</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/carrier.png" alt="Carrier" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">HEAVY DUTY</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/mabe.png" alt="Mabe" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">TUBERÍA COBRE</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/midea.png" alt="Midea" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SEER 22+ TECH</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/hisense.png" alt="Hisense" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SMART INVERTER</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/lg.png" alt="LG" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">DUAL COMPRESSOR</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/prime.png" alt="Prime" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">ECO R32 FLUID</span><span class="brand-item__dot"></span></div>
+                        </div>
+
+                        <!-- SET 2 -->
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/mirage.png" alt="Mirage" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">AUTORIZADO // TAB</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/carrier.png" alt="Carrier" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">HEAVY DUTY</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/mabe.png" alt="Mabe" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">TUBERÍA COBRE</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/midea.png" alt="Midea" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SEER 22+ TECH</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/hisense.png" alt="Hisense" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SMART INVERTER</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/lg.png" alt="LG" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">DUAL COMPRESSOR</span><span class="brand-item__dot"></span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/prime.png" alt="Prime" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">ECO R32 FLUID</span><span class="brand-item__dot"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATS ===== -->
+        <section class="stats" id="stats" aria-label="Estadísticas de servicio">
+            <div class="stats__wrap">
+                <div class="stats__grid">
+                    <div class="stat-card">
+                        <span class="stat-card__num" data-target="850">850</span><span class="stat-card__unit">+</span>
+                        <span class="stat-card__label">Equipos Instalados en Cárdenas</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__num" data-target="15">15</span><span class="stat-card__unit">+</span>
+                        <span class="stat-card__label">Años de Experiencia Técnica</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__num" data-target="100">100</span><span class="stat-card__unit">%</span>
+                        <span class="stat-card__label">Garantía por Escrito en Mano</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__num" data-target="4.9">4.9</span><span class="stat-card__unit">★</span>
+                        <span class="stat-card__label">Calificación de Clientes Satisfechos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICIOS RESUMEN ===== -->
+        <section class="services" id="servicios">
+            <div class="services__wrap">
+                <div class="services__header">
+                    <span class="services__kicker">Nuestros Servicios Técnicos</span>
+                    <h2 class="services__title">Mano de obra calificada para el clima de Tabasco</h2>
+                    <p class="services__subtitle">Cada trabajo se realiza siguiendo la norma técnica: vacío con bomba de 2 etapas, pruebas de presión con nitrógeno y sellado hermético.</p>
+                </div>
+
+                <div class="services__grid">
+                    <div class="service-card service-card--featured">
+                        <div class="service-card__badge">MÁS SOLICITADO</div>
+                        <div class="service-card__icon">⚡</div>
+                        <h3 class="service-card__title">Instalación Certificada</h3>
+                        <p class="service-card__desc">Instalación completa de minisplits 110V y 220V. Incluye bomba de vacío para eliminar humedad, soporte y fijación antivibratoria.</p>
+                        <ul class="service-card__features">
+                            <li>Bomba de vacío obligatoria</li>
+                            <li>Tubería de cobre aislada</li>
+                            <li>Garantía de 1 año en mano de obra</li>
+                        </ul>
+                        <div class="service-card__footer">
+                            <span class="service-card__price">Desde $1,200 MXN</span>
+                            <a href="servicios.html#instalacion" class="btn btn--secondary btn--sm">Ver detalles →</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">🧼</div>
+                        <h3 class="service-card__title">Mantenimiento Profundo</h3>
+                        <p class="service-card__desc">Lavado con hidrolavadora de serpentín, turbina, charola de desagüe y sanitización con bactericida biodegradable.</p>
+                        <ul class="service-card__features">
+                            <li>Desarme completo y bolsa colectora</li>
+                            <li>Eliminación de hongos y mal olor</li>
+                            <li>Medición de presiones de gas</li>
+                        </ul>
+                        <div class="service-card__footer">
+                            <span class="service-card__price">Desde $650 MXN</span>
+                            <a href="servicios.html#mantenimiento" class="btn btn--secondary btn--sm">Ver detalles →</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">🔍</div>
+                        <h3 class="service-card__title">Reparación de Fugas y Gas</h3>
+                        <p class="service-card__desc">Detección electrónica de micro-fugas en abocinados y soldaduras. Carga precisa con báscula de gas ecológico R410A o R32.</p>
+                        <ul class="service-card__features">
+                            <li>Sellado hermético de tubería</li>
+                            <li>Prueba de estanqueidad</li>
+                            <li>Restablecimiento de frío polar</li>
+                        </ul>
+                        <div class="service-card__footer">
+                            <span class="service-card__price">Diagnóstico en sitio</span>
+                            <a href="servicios.html#reparacion" class="btn btn--secondary btn--sm">Ver detalles →</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-card__icon">🏷️</div>
+                        <h3 class="service-card__title">Venta de Climas y Línea Blanca</h3>
+                        <p class="service-card__desc">Equipos nuevos sellados de fábrica con recubrimiento Gold Fin anticorrosivo especial para la humedad de Cárdenas y Tabasco.</p>
+                        <ul class="service-card__features">
+                            <li>Marcas líderes: Mirage, Carrier, LG, Mabe</li>
+                            <li>Minisplits, Lavadoras y Refrigeración</li>
+                            <li>Envío y entrega en Cárdenas y la Chontalpa</li>
+                        </ul>
+                        <div class="service-card__footer">
+                            <span class="service-card__price">Desde $6,490 MXN</span>
+                            <a href="equipos.html" class="btn btn--secondary btn--sm">Ver catálogo →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="servicios.html" class="btn btn--primary">Explorar Todos los Servicios y Paquetes →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DESTACADOS DE TIENDA (NUEVO FORMATO E-COMMERCE) ===== -->
+        <section class="catalog-section" id="tienda">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div class="catalog__header">
+                    <span class="services__kicker">Venta de Equipos Nuevos</span>
+                    <h2 class="services__title">Climas y Línea Blanca de Alta Eficiencia</h2>
+                    <p class="services__subtitle">Minisplits Inverter, Lavadoras, Refrigeradores y Protectores con entrega inmediata en Cárdenas y toda la Chontalpa.</p>
+                </div>
+
+                <!-- Tabs de Filtro de Categoría -->
+                <div class="catalog__tabs" style="justify-content: center; margin-bottom: 2rem;">
+                    <button type="button" class="catalog-tab is-active" data-filter="all">Todos los Equipos</button>
+                    <button type="button" class="catalog-tab" data-filter="climas">❄️ Minisplits Inverter</button>
+                    <button type="button" class="catalog-tab" data-filter="lavadoras">🧺 Lavadoras Automáticas</button>
+                    <button type="button" class="catalog-tab" data-filter="refrigeracion">🧊 Refrigeración</button>
+                    <button type="button" class="catalog-tab" data-filter="refacciones">⚡ Protectores Voltaje</button>
+                </div>
+
+                <div class="catalog__grid" id="catalogGrid">
+                    <!-- Productos generados dinámicamente por js/catalog.js -->
+                </div>
+
+                <div style="text-align: center; margin-top: 3.5rem;">
+                    <a href="equipos.html" class="btn btn--primary" style="padding: 1rem 2rem; font-size: 1.05rem;">
+                        Ver Tienda Completa y Todos los Modelos Disponibles →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TEASER CALCULADORA ===== -->
+        <section class="calculator-section" style="padding: 5rem 0; background: #FFFFFF;">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div style="background: linear-gradient(135deg, #071B38, #0047AB, #0066FF); border-radius: 28px; padding: 3.5rem 2.5rem; color: #FFFFFF; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center;">
+                    <div>
+                        <span style="display: inline-block; padding: 0.35rem 0.85rem; background: rgba(0, 184, 255, 0.2); border-radius: 9999px; font-size: 0.8rem; font-weight: 800; color: #00D2FF; margin-bottom: 1rem;">CALCULADORA TÉRMICA TABASCO</span>
+                        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #FFFFFF;">¿No sabes cuántos BTUs o Toneladas necesita tu espacio?</h2>
+                        <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin-bottom: 2rem;">
+                            En Tabasco, con temperaturas de hasta 42°C y alta humedad, un mal cálculo significa recibos carísimos de CFE o un clima que nunca enfría. Nuestra herramienta calcula la radiación solar en techos y te da la capacidad exacta.
+                        </p>
+                        <a href="calculadora.html" class="btn btn--white" style="background: #FFFFFF; color: #0047AB; font-weight: 800; padding: 0.9rem 1.8rem; border-radius: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                            <span>🧮 Abrir Calculadora Térmica para Tabasco</span>
+                        </a>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 2rem; text-align: center;">
+                        <span style="font-size: 3rem; display: block; margin-bottom: 0.5rem;">❄️</span>
+                        <div style="font-size: 1.8rem; font-weight: 900; font-family: var(--font-mono); margin-bottom: 0.25rem;">12,000 a 36,000 BTU</div>
+                        <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">1.0 a 3.0 Toneladas · 220V Bifásico</div>
+                        <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quisiera%20asesor%C3%ADa%20gratuita%20para%20saber%20qu%C3%A9%20capacidad%20de%20clima%20poner%20en%20mi%20casa" class="btn btn--wa" style="width: 100%; justify-content: center;" target="_blank" rel="noopener">
+                            Asesoría Gratuita por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROCESO ===== -->
+        <section class="timeline" id="proceso">
+            <div class="timeline__wrap">
+                <div class="timeline__header">
+                    <span class="timeline__kicker">Cómo Trabajamos</span>
+                    <h2 class="timeline__title">Servicio Profesional en 4 Pasos</h2>
+                    <p class="timeline__subtitle">Sin sorpresas, sin cargos ocultos y con garantía por escrito.</p>
+                </div>
+                <div class="timeline__steps">
+                    <div class="timeline__step">
+                        <div class="timeline__step-num">1</div>
+                        <h3 class="timeline__step-title">Contacto Rápido</h3>
+                        <p class="timeline__step-desc">Envíanos un mensaje por WhatsApp. Cuéntanos qué servicio necesitas o qué falla presenta tu equipo.</p>
+                    </div>
+                    <div class="timeline__step">
+                        <div class="timeline__step-num">2</div>
+                        <h3 class="timeline__step-title">Diagnóstico y Cotización</h3>
+                        <p class="timeline__step-desc">Agendamos fecha y hora puntual. Te damos un presupuesto claro y por escrito antes de iniciar.</p>
+                    </div>
+                    <div class="timeline__step">
+                        <div class="timeline__step-num">3</div>
+                        <h3 class="timeline__step-title">Ejecución Limpia</h3>
+                        <p class="timeline__step-desc">Realizamos la instalación o mantenimiento con herramientas profesionales, cuidando tus paredes y pisos.</p>
+                    </div>
+                    <div class="timeline__step">
+                        <div class="timeline__step-num">4</div>
+                        <h3 class="timeline__step-title">Pruebas y Garantía</h3>
+                        <p class="timeline__step-desc">Verificamos amperaje, temperatura y drenaje. Te entregamos tu hoja de garantía sellada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIOS ===== -->
+        <section class="testimonials" id="testimonios">
+            <div class="testimonials__wrap">
+                <div class="testimonials__header">
+                    <span class="testimonials__kicker">Opiniones Reales</span>
+                    <h2 class="testimonials__title">La Confianza de Familias y Negocios en Tabasco</h2>
+                </div>
+                <div class="testimonials__grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__stars">★★★★★</div>
+                        <p class="testimonial-card__text">"Puntuales y muy limpios. Instalaron 2 minisplits Mirage con bomba de vacío como debe ser. Excelente trabajo de GH."</p>
+                        <div class="testimonial-card__author">
+                            <strong>Ing. Carlos Pech</strong>
+                            <span>Cárdenas Centro, Tabasco</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__stars">★★★★★</div>
+                        <p class="testimonial-card__text">"Mi clima tiraba agua y casi no enfriaba con este calor. Llegaron a tiempo, lavaron todo a presión y quedó congelando. 100% recomendados."</p>
+                        <div class="testimonial-card__author">
+                            <strong>Lic. Mariana Solís</strong>
+                            <span>Comalcalco, Tabasco</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-card__stars">★★★★★</div>
+                        <p class="testimonial-card__text">"Compré un Mirage Inverter de 1.5 Ton y una lavadora Mabe con ellos. La instalación quedó impecable el mismo día. La atención por WhatsApp es rápida."</p>
+                        <div class="testimonial-card__author">
+                            <strong>Dr. Roberto Méndez</strong>
+                            <span>Paraíso, Tabasco</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACTO ===== -->
+        <section class="contact" id="contacto">
+            <div class="contact__wrap">
+                <div class="contact__header">
+                    <span class="contact__kicker">Contacto Inmediato</span>
+                    <h2 class="contact__title">Cotiza tu Servicio en Minutos</h2>
+                    <p class="contact__subtitle">Atención directa en Heroica Cárdenas y municipios conurbados de Tabasco. Escríbenos o llena el formulario para enviarte presupuesto al instante.</p>
+                </div>
+
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">📱</span>
+                            <h3>WhatsApp Directo</h3>
+                            <p>Respuesta rápida y presupuestos inmediatos</p>
+                            <a href="https://wa.me/529371037277" target="_blank" class="contact__info-link">937-103-7277</a>
+                        </div>
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">📍</span>
+                            <h3>Cobertura Completa</h3>
+                            <p>Heroica Cárdenas, Comalcalco, Huimanguillo, Cunduacán, Paraíso, Jalpa de Méndez y Villahermosa.</p>
+                        </div>
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">⏰</span>
+                            <h3>Horario de Atención</h3>
+                            <p>Lunes a Sábado: 8:00 AM – 7:00 PM<br>Servicio de urgencias disponible.</p>
+                        </div>
+                    </div>
+
+                    <form class="contact__form" id="contactForm">
+                        <div class="form-group">
+                            <label for="c-name">Tu Nombre</label>
+                            <input type="text" id="c-name" name="name" placeholder="Ej. Carlos Mendoza" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-colonia">Colonia o Municipio en Tabasco</label>
+                            <input type="text" id="c-colonia" name="colonia" placeholder="Ej. Cárdenas Centro, Comalcalco, Huimanguillo..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-service">Servicio Requerido</label>
+                            <select id="c-service" name="service" required>
+                                <option value="instalacion">Instalación de Equipo Nuevo</option>
+                                <option value="mantenimiento">Mantenimiento Preventivo (Lavado)</option>
+                                <option value="reparacion">Reparación / Fuga de Gas / Goteo</option>
+                                <option value="compra">Compra de Minisplit o Línea Blanca</option>
+                                <option value="otro">Otro servicio / Asesoría</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-notes">Detalles del equipo (Marca, toneladas o problema)</label>
+                            <textarea id="c-notes" name="notes" rows="3" placeholder="Ej. Minisplit 1.5 Ton no enfría suficiente..."></textarea>
+                        </div>
+
+                        <!-- Burbuja de WhatsApp en vivo -->
+                        <div class="contact__preview" id="waPreviewBox">
+                            <div class="contact__preview-bubble">
+                                <span class="contact__preview-label">Vista previa mensaje de WhatsApp:</span>
+                                <p id="waPreviewText">Hola GH Servicios Técnicos, me gustaría cotizar...</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn--wa btn--full" id="btnSendWa">
+                            <span>Enviar Cotización a WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/emblem-gh.svg" width="50" height="34" alt="GH Emblema">
+                        <span>GH SERVICIOS TÉCNICOS</span>
+                    </div>
+                    <p>Expertos en instalación, mantenimiento y venta de aire acondicionado y línea blanca en Cárdenas, Tabasco y la Chontalpa. Calidad y servicio 100% garantizado.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="equipos.html">Catálogo de Equipos</a></li>
+                        <li><a href="calculadora.html">Calculadora BTU</a></li>
+                        <li><a href="nosotros.html">Nosotros y Garantía</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#instalacion">Instalación Certificada</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento Profundo</a></li>
+                        <li><a href="servicios.html#reparacion">Reparación de Fugas</a></li>
+                        <li><a href="servicios.html#inverter">Diagnóstico Inverter</a></li>
+                        <li><a href="equipos.html">Venta de Minisplits y Línea Blanca</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Atención</h4>
+                    <p>Heroica Cárdenas, Tabasco, México</p>
+                    <p><strong>WhatsApp / Tel:</strong> <a href="https://wa.me/529371037277" style="color: #00B8FF;">937-103-7277</a></p>
+                    <p>Lunes a Sábado: 8:00 AM a 7:00 PM</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 GH Servicios Técnicos. Todos los derechos reservados. Heroica Cárdenas, Tabasco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Widget Flotante de WhatsApp -->
+    <div id="gh-widget-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/snow.js?v=25"></script>
+    <script src="js/catalog.js?v=25"></script>
+    <script type="module" src="js/main.js?v=25"></script>
+</body>
+</html>

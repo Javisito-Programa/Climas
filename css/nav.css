@@ -1,0 +1,283 @@
+/* ==========================================================================
+   GH SERVICIOS TÉCNICOS — MENÚ DE NAVEGACIÓN EJECUTIVO LUXURY TECH
+   ========================================================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom: 1px solid rgba(0, 98, 204, 0.14);
+  box-shadow: 0 4px 20px rgba(9, 26, 68, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav.is-scrolled {
+  background: #FFFFFF;
+  box-shadow: 0 8px 30px rgba(9, 26, 68, 0.1);
+  border-bottom-color: rgba(0, 98, 204, 0.2);
+}
+
+.nav__wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+  gap: 1.5rem;
+}
+
+/* Logo Oficial GH */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.nav__logo:hover {
+  transform: scale(1.02);
+}
+
+.nav__logo-svg-wrap {
+  width: 44px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav__logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__logo-brand {
+  font-family: var(--font-sans, 'Sora', sans-serif);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.15;
+  color: #091124;
+  letter-spacing: -0.01em;
+}
+
+.nav__logo-sub {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0062CC;
+  line-height: 1.2;
+}
+
+/* Enlaces de Navegación */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.nav__link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #334155;
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  color: #0062CC;
+  background: rgba(0, 98, 204, 0.08);
+}
+
+.nav__link.is-active {
+  color: #0062CC;
+  background: rgba(0, 98, 204, 0.12);
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(0, 98, 204, 0.2);
+}
+
+/* Acciones */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: 0.75rem;
+}
+
+/* Botón CTA WhatsApp */
+.nav__cta-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF;
+  font-size: 0.84rem;
+  font-weight: 800;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav__cta-wa:hover {
+  background: linear-gradient(135deg, #2EE872 0%, #15A090 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+/* Botón de Sonido */
+.sound-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 98, 204, 0.06);
+  border: 1px solid rgba(0, 98, 204, 0.16);
+  color: #091124;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sound-toggle-btn:hover {
+  color: #0062CC;
+  border-color: #0062CC;
+  background: rgba(0, 98, 204, 0.12);
+}
+
+.sound-toggle-btn.is-muted svg path:last-child {
+  opacity: 0.25;
+}
+
+/* Hamburguesa Móvil */
+.nav__burger {
+  display: none;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.nav__burger span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  background: #091124;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.nav__burger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.nav__burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__burger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* Menú Móvil Desplegable */
+.nav__mobile {
+  position: fixed;
+  top: 4.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem var(--container-px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 10px 40px rgba(9, 26, 68, 0.12);
+}
+
+.nav__mobile.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__mobile nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.nav__mob-link {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #091124;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  background: #F8FAFC;
+  border: 1px solid rgba(0, 98, 204, 0.08);
+  transition: all 0.2s ease;
+}
+
+.nav__mob-link:hover,
+.nav__mob-link.is-active {
+  background: rgba(0, 98, 204, 0.1);
+  color: #0062CC;
+  border-color: #0062CC;
+}
+
+@media (max-width: 1024px) {
+  .nav__links {
+    gap: 0.2rem;
+  }
+  .nav__link {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.65rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav__links,
+  .nav__actions .sound-toggle-btn {
+    display: none;
+  }
+  .nav__burger {
+    display: flex;
+  }
+}

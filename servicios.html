@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Climatización y Línea Blanca en Cárdenas, Tabasco | GH Servicios Técnicos</title>
+    <meta name="description" content="Instalación con bomba de vacío, mantenimiento preventivo con hidrolavadora, reparación de fugas y recarga de gas en Cárdenas, Tabasco y municipios conurbados. Calidad garantizada. WhatsApp: 937-103-7277.">
+    <meta name="theme-color" content="#0062CC">
+    <link rel="icon" type="image/svg+xml" href="assets/emblem-gh.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=25">
+    <link rel="stylesheet" href="css/loader.css?v=25">
+    <link rel="stylesheet" href="css/snow.css?v=25">
+    <link rel="stylesheet" href="css/nav.css?v=25">
+    <link rel="stylesheet" href="css/services.css?v=25">
+    <link rel="stylesheet" href="css/brands.css?v=25">
+    <link rel="stylesheet" href="css/footer.css?v=25">
+    <link rel="stylesheet" href="css/widget.css?v=25">
+    <style>
+        .page-hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(180deg, #B2C0CF 0%, #BAC7D5 100%);
+            position: relative;
+            text-align: center;
+        }
+        .service-detail-section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(0, 98, 204, 0.12);
+        }
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+        .service-detail-grid.reverse {
+            grid-template-columns: 0.9fr 1.1fr;
+        }
+        .service-spec-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 98, 204, 0.15);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 50, 120, 0.05);
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin: 2.5rem 0;
+        }
+        .pricing-table th, .pricing-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        .pricing-table th {
+            background: #F1F5F9;
+            color: #091124;
+            font-weight: 800;
+        }
+        .pricing-table tr:hover td {
+            background: rgba(0, 98, 204, 0.02);
+        }
+        @media (max-width: 860px) {
+            .service-detail-grid, .service-detail-grid.reverse {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+    <!-- Canvas de Nieve y Escarcha Polar -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- ===== LOADER (Transición Rápida Criogénica) ===== -->
+    <div class="loader" id="loader" aria-label="Cargando servicios">
+        <canvas id="loader-canvas" class="loader__canvas"></canvas>
+        <div class="loader__content">
+            <div class="loader__brand" id="loader-brand">
+                <div class="loader__brand-mark">
+                    <img src="assets/emblem-gh.svg" width="300" height="195" alt="GH Servicios Técnicos" class="loader__brand-img">
+                </div>
+                <h2 class="loader__brand-name">GH SERVICIOS TÉCNICOS</h2>
+                <p class="loader__brand-slogan">Cárdenas, Tabasco · Venta · Instalación · Mantenimiento</p>
+            </div>
+            <div class="loader__scene">
+                <div class="loader__thermo">
+                    <div class="loader__tube">
+                        <div class="loader__tube-glass"></div>
+                        <div class="loader__mercury" id="loader-mercury"></div>
+                        <div class="loader__tube-frost" id="loader-tube-frost"></div>
+                        <div class="loader__scale">
+                            <span data-t="40°"></span>
+                            <span data-t="30°"></span>
+                            <span data-t="20°"></span>
+                            <span data-t="16°"></span>
+                        </div>
+                    </div>
+                    <div class="loader__bulb" id="loader-bulb">
+                        <div class="loader__bulb-glow"></div>
+                    </div>
+                </div>
+                <div class="loader__readout">
+                    <div class="loader__readout-temp">
+                        <span class="loader__readout-num" id="loader-temp">28</span>
+                        <span class="loader__readout-unit">°C</span>
+                    </div>
+                    <span class="loader__readout-label" id="loader-status">Cargando servicios…</span>
+                </div>
+            </div>
+        </div>
+        <div class="loader__ice-overlay" id="loader-frost"></div>
+    </div>
+
+    <!-- ===== NAV ===== -->
+    <header class="nav" id="main-nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="GH Servicios Técnicos — Inicio">
+                <div class="nav__logo-svg-wrap">
+                    <img src="assets/emblem-gh.svg" width="46" height="30" alt="GH Logo" class="nav__logo-img">
+                </div>
+                <div class="nav__logo-text">
+                    <span class="nav__logo-brand">GH <span class="grad-text">SERVICIOS TÉCNICOS</span></span>
+                    <span class="nav__logo-sub">Cárdenas, Tabasco</span>
+                </div>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="servicios.html" class="nav__link is-active">Servicios</a>
+                <a href="equipos.html" class="nav__link">Catálogo Equipos</a>
+                <a href="calculadora.html" class="nav__link">Calculadora BTU</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="contacto.html" class="nav__link">Contacto</a>
+            </nav>
+
+            <div class="nav__actions">
+                <a href="https://wa.me/529371037277?text=Hola%20GH%20Servicios%20T%C3%A9cnicos%2C%20quiero%20agendar%20un%20servicio" class="nav__cta-wa" target="_blank" rel="noopener">
+                    <span>💬 937-103-7277 | Cotizar</span>
+                </a>
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+        <nav aria-label="Menú móvil">
+            <a href="index.html" class="nav__mob-link">Inicio</a>
+            <a href="servicios.html" class="nav__mob-link">Servicios</a>
+            <a href="equipos.html" class="nav__mob-link">Catálogo Equipos</a>
+            <a href="calculadora.html" class="nav__mob-link">Calculadora BTU</a>
+            <a href="nosotros.html" class="nav__mob-link">Nosotros</a>
+            <a href="contacto.html" class="nav__mob-link">Contacto</a>
+            <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20necesito%20servicio%20t%C3%A9cnico%20en%20C%C3%A1rdenas" class="btn btn--primary btn--full" target="_blank" rel="noopener">WhatsApp: 937-103-7277</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO DE PÁGINA ===== -->
+        <section class="page-hero">
+            <div class="frost-ambient"></div>
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px); position: relative; z-index: 2;">
+                <span class="services__kicker">CÁRDENAS Y MUNICIPIOS DE TABASCO</span>
+                <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #091124; margin-bottom: 1rem;">Servicios Profesionales de Aire Acondicionado y Línea Blanca</h1>
+                <p style="font-size: 1.1rem; color: #475569; max-width: 720px; margin: 0 auto 2rem; line-height: 1.6;">
+                    Trabajos ejecutados bajo estrictas normas de refrigeración: bomba de vacío para eliminar humedad, tubería de cobre y materiales de uso rudo resistentes al calor extremo de Tabasco.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20cotizar%20un%20servicio%20para%20mi%20aire%20acondicionado" class="btn btn--primary" target="_blank" rel="noopener">
+                        💬 Agendar por WhatsApp (937-103-7277)
+                    </a>
+                    <a href="#paquetes" class="btn btn--secondary">Ver Lista de Precios y Paquetes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DETALLE 1: INSTALACIÓN ===== -->
+        <section class="service-detail-section" id="instalacion">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div class="service-detail-grid">
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 800; color: #0062CC; text-transform: uppercase;">SERVICIO ESPECIALIZADO 01</span>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #091124; margin: 0.5rem 0 1rem;">Instalación Certificada con Bomba de Vacío</h2>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.25rem;">
+                            En Cárdenas y la Chontalpa, la humedad relativa supera con frecuencia el 85%. Si un instalador no realiza vacío con bomba de dos etapas, esa humedad se mezcla con el aceite sintético del compresor formando ácido que quema el motor en menos de dos años.
+                        </p>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.5rem;">
+                            En <strong>GH Servicios Técnicos</strong> garantizamos el vacío por debajo de los 500 micrones, asegurando que tu equipo enfríe al 100% de su capacidad y conserve su garantía de fábrica.
+                        </p>
+                        <div style="background: rgba(0, 98, 204, 0.04); border-left: 4px solid #0062CC; padding: 1rem 1.25rem; border-radius: 0 12px 12px 0;">
+                            <strong style="color: #091124;">¿Qué incluye nuestra instalación básica?</strong>
+                            <ul style="margin-top: 0.5rem; color: #475569; font-size: 0.9rem; line-height: 1.6; padding-left: 1.25rem;">
+                                <li>Hasta 4 metros de tubería de cobre aislada y cable de uso rudo.</li>
+                                <li>Montaje de unidad interior nivelada y perforación de muro.</li>
+                                <li>Montaje de condensador exterior con base y taquetes reforzados.</li>
+                                <li>Proceso de vacío técnico y comprobación de estanqueidad.</li>
+                                <li>Puesta en marcha y medición de salto térmico (temperatura de salida).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="service-spec-card">
+                            <h3 style="font-size: 1.2rem; font-weight: 800; color: #091124; margin-bottom: 1rem;">Inversión Estimada en Instalación</h3>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>Minisplit 1.0 Ton (12k BTU):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$1,200 MXN</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>Minisplit 1.5 Ton (18k BTU):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$1,400 MXN</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>Minisplit 2.0 Ton (24k BTU):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$1,800 MXN</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; margin-bottom: 1.5rem;">
+                                <span>Desinstalación de equipo anterior:</span>
+                                <strong style="color: #059669; font-family: var(--font-mono);">$400 MXN</strong>
+                            </div>
+                            <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20cotizar%20la%20instalaci%C3%B3n%20de%20un%20clima%20en%20C%C3%A1rdenas" class="btn btn--primary btn--full" target="_blank" rel="noopener">
+                                Agendar Instalación por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DETALLE 2: MANTENIMIENTO ===== -->
+        <section class="service-detail-section" id="mantenimiento" style="background: #F8FAFC;">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div class="service-detail-grid reverse">
+                    <div>
+                        <div class="service-spec-card">
+                            <h3 style="font-size: 1.2rem; font-weight: 800; color: #091124; margin-bottom: 1rem;">Paquetes de Mantenimiento Preventivo</h3>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>1 Solo Equipo (Lavado completo):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$650 MXN</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>Paquete Dúo (2 Equipos):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$1,100 MXN ($550 c/u)</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0;">
+                                <span>Paquete Residencial (3 a 4 Equipos):</span>
+                                <strong style="color: #0062CC; font-family: var(--font-mono);">$500 c/u</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; margin-bottom: 1.5rem;">
+                                <span>Paquete Comercial (5+ Equipos):</span>
+                                <strong style="color: #059669; font-family: var(--font-mono);">$450 c/u</strong>
+                            </div>
+                            <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20agendar%20mantenimiento%20preventivo%20para%20mis%20climas%20en%20C%C3%A1rdenas" class="btn btn--primary btn--full" target="_blank" rel="noopener">
+                                Agendar Mantenimiento por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 800; color: #0062CC; text-transform: uppercase;">SERVICIO ESPECIALIZADO 02</span>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #091124; margin: 0.5rem 0 1rem;">Mantenimiento Profundo con Hidrolavadora a Presión</h2>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.25rem;">
+                            ¿Tu clima tiene mal olor, gotea agua por la carátula o dejó de enfriar como antes? Con el calor constante de Tabasco, la humedad genera colonias de moho y hongos en la turbina y la charola de desagüe.
+                        </p>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.5rem;">
+                            Utilizamos <strong>fundas recolectoras impermeables de grado profesional</strong> para proteger tus paredes, muebles y pisos, aplicando chorro de hidrolavadora con líquido desengrasante y sanitizante biodegradable.
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div style="background: #FFFFFF; padding: 1rem; border-radius: 12px; border: 1px solid #E2E8F0;">
+                                <strong style="color: #091124; font-size: 0.9rem; display: block; margin-bottom: 0.25rem;">🌬️ Turbina y Serpentín</strong>
+                                <span style="font-size: 0.8rem; color: #64748B;">Desincrustación total de polvo acumulado para flujo de aire máximo.</span>
+                            </div>
+                            <div style="background: #FFFFFF; padding: 1rem; border-radius: 12px; border: 1px solid #E2E8F0;">
+                                <strong style="color: #091124; font-size: 0.9rem; display: block; margin-bottom: 0.25rem;">💧 Drenaje Anti-Goteo</strong>
+                                <span style="font-size: 0.8rem; color: #64748B;">Sopleteo y destape de manguera de condensados para evitar filtraciones.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DETALLE 3: REPARACIÓN DE FUGAS ===== -->
+        <section class="service-detail-section" id="reparacion">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div class="service-detail-grid">
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 800; color: #0062CC; text-transform: uppercase;">SERVICIO ESPECIALIZADO 03</span>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #091124; margin: 0.5rem 0 1rem;">Reparación de Fugas y Recarga de Gas Refrigerante</h2>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.25rem;">
+                            El gas refrigerante no se "gasta" ni se "consume". Si tu aire acondicionado perdió gas, <strong>tiene una fuga física</strong> en alguna tuerca o soldadura. Ponerle gas sin reparar la fuga es tirar el dinero.
+                        </p>
+                        <p style="color: #475569; line-height: 1.65; margin-bottom: 1.5rem;">
+                            En GH localizamos el punto exacto de fuga, rehacemos las conexiones con abocinadores excéntricos o soldadura de plata, presurizamos el sistema y pesamos la carga con báscula digital siguiendo los gramos exactos indicados por el fabricante.
+                        </p>
+                        <ul style="color: #475569; line-height: 1.8; font-size: 0.92rem; padding-left: 1.25rem;">
+                            <li><strong>Gas R410A:</strong> Refrigerante ecológico de alta presión para minisplits Inverter y tradicionales.</li>
+                            <li><strong>Gas R32:</strong> La nueva generación de refrigerante con cero daño a la capa de ozono y mayor rendimiento térmico.</li>
+                            <li><strong>Garantía de estanqueidad:</strong> Verificación de 0 psi de caída de presión antes de liberar el gas.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="service-spec-card">
+                            <h3 style="font-size: 1.2rem; font-weight: 800; color: #091124; margin-bottom: 1rem;">Diagnóstico de Fallas en Sitio</h3>
+                            <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 1.25rem;">
+                                ¿Tu equipo arroja algún código de error como E1, E3, E5, EC o se apaga a los 10 minutos? Enviamos a un técnico certificado a tu domicilio en Cárdenas o municipios cercanos.
+                            </p>
+                            <div style="background: #F1F5F9; border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem;">
+                                <span style="font-size: 0.8rem; font-weight: 700; color: #0062CC;">VISITA DE DIAGNÓSTICO:</span>
+                                <div style="font-size: 1.4rem; font-weight: 900; color: #091124; font-family: var(--font-mono);">$300 MXN</div>
+                                <small style="color: #64748B; font-size: 0.75rem;">*Se bonifica al 100% si autorizas la reparación en el momento.</small>
+                            </div>
+                            <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20mi%20clima%20no%20enfr%C3%ADa%20y%20quiero%20agendar%20un%20diagn%C3%B3stico%20en%20C%C3%A1rdenas" class="btn btn--wa btn--full" target="_blank" rel="noopener">
+                                Solicitar Diagnóstico por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TABLA DE PRECIOS ===== -->
+        <section class="service-detail-section" id="paquetes" style="background: #FFFFFF;">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem;">
+                    <span class="services__kicker">TRANSPARENCIA TOTAL</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #091124;">Tabla de Precios de Servicios en Tabasco</h2>
+                    <p style="color: #64748B; margin-top: 0.5rem;">Precios claros, en pesos mexicanos y sin sorpresas de último momento.</p>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Capacidad</th>
+                                <th>Qué Incluye</th>
+                                <th>Precio</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mantenimiento Preventivo</strong></td>
+                                <td>1.0 a 1.5 Ton</td>
+                                <td>Lavado con hidrolavadora, sanitizante, limpieza de charola y medición de gas</td>
+                                <td><strong style="color: #0062CC; font-family: var(--font-mono);">$650 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20mantenimiento%20para%20clima%20de%201.0/1.5%20Ton" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mantenimiento Preventivo</strong></td>
+                                <td>2.0 a 3.0 Ton</td>
+                                <td>Lavado profundo de unidad interior y exterior de alta capacidad</td>
+                                <td><strong style="color: #0062CC; font-family: var(--font-mono);">$800 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20mantenimiento%20para%20clima%20de%202.0/3.0%20Ton" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Instalación Básica</strong></td>
+                                <td>1.0 Ton (12k)</td>
+                                <td>Bomba de vacío, tubería 4m, soporte y fijación completa</td>
+                                <td><strong style="color: #0062CC; font-family: var(--font-mono);">$1,200 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20instalaci%C3%B3n%20para%20clima%20de%201.0%20Ton" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Instalación Básica</strong></td>
+                                <td>1.5 Ton (18k)</td>
+                                <td>Bomba de vacío, tubería 4m, soporte y fijación completa</td>
+                                <td><strong style="color: #0062CC; font-family: var(--font-mono);">$1,400 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20instalaci%C3%B3n%20para%20clima%20de%201.5%20Ton" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Instalación Básica</strong></td>
+                                <td>2.0 Ton (24k)</td>
+                                <td>Bomba de vacío, tubería 4m, soporte y conexión a 220V</td>
+                                <td><strong style="color: #0062CC; font-family: var(--font-mono);">$1,800 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20instalaci%C3%B3n%20para%20clima%20de%202.0%20Ton" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Carga de Gas + Fuga</strong></td>
+                                <td>Cualquiera</td>
+                                <td>Localización de fuga, reparación hermética y carga completa pesada</td>
+                                <td><strong style="color: #059669; font-family: var(--font-mono);">Desde $950 MXN</strong></td>
+                                <td><a href="https://wa.me/529371037277?text=Hola%20GH%2C%20necesito%20reparaci%C3%B3n%20de%20fuga%20y%20gas" class="btn btn--wa btn--sm" target="_blank">Pedir</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/emblem-gh.svg" width="50" height="34" alt="GH Emblema">
+                        <span>GH SERVICIOS TÉCNICOS</span>
+                    </div>
+                    <p>Expertos en instalación, mantenimiento y venta de aire acondicionado y línea blanca en Cárdenas, Tabasco y la Chontalpa. Calidad y servicio 100% garantizado.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="equipos.html">Catálogo de Equipos</a></li>
+                        <li><a href="calculadora.html">Calculadora BTU</a></li>
+                        <li><a href="nosotros.html">Nosotros y Garantía</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#instalacion">Instalación Certificada</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento Profundo</a></li>
+                        <li><a href="servicios.html#reparacion">Reparación de Fugas</a></li>
+                        <li><a href="equipos.html">Venta de Minisplits y Línea Blanca</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Atención</h4>
+                    <p>Heroica Cárdenas, Tabasco, México</p>
+                    <p><strong>WhatsApp / Tel:</strong> <a href="https://wa.me/529371037277" style="color: #00B8FF;">937-103-7277</a></p>
+                    <p>Lunes a Sábado: 8:00 AM a 7:00 PM</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 GH Servicios Técnicos. Todos los derechos reservados. Heroica Cárdenas, Tabasco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="gh-widget-container"></div>
+
+    <script src="js/snow.js?v=25"></script>
+    <script type="module" src="js/main.js?v=25"></script>
+</body>
+</html>

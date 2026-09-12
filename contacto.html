@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y Cobertura en Cárdenas, Tabasco | GH Servicios Técnicos</title>
+    <meta name="description" content="Contáctanos para servicio de aire acondicionado y línea blanca en Cárdenas, Tabasco. WhatsApp directo 937-103-7277. Cobertura en Cárdenas, Comalcalco, Huimanguillo, Cunduacán y Paraíso.">
+    <meta name="theme-color" content="#0062CC">
+    <link rel="icon" type="image/svg+xml" href="assets/emblem-gh.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=25">
+    <link rel="stylesheet" href="css/loader.css?v=25">
+    <link rel="stylesheet" href="css/snow.css?v=25">
+    <link rel="stylesheet" href="css/nav.css?v=25">
+    <link rel="stylesheet" href="css/contact.css?v=25">
+    <link rel="stylesheet" href="css/faq.css?v=25">
+    <link rel="stylesheet" href="css/footer.css?v=25">
+    <link rel="stylesheet" href="css/widget.css?v=25">
+    <style>
+        .page-hero {
+            padding: 8rem 0 3.5rem;
+            background: linear-gradient(180deg, #B2C0CF 0%, #BAC7D5 100%);
+            text-align: center;
+            position: relative;
+        }
+        .zones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .zone-card {
+            background: #FFFFFF;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 98, 204, 0.12);
+            padding: 1.5rem;
+            box-shadow: 0 4px 18px rgba(0, 50, 120, 0.04);
+        }
+        .zone-card h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0062CC;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .zone-card p {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+    <!-- Canvas de Nieve y Escarcha Polar -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- ===== LOADER (Transición Rápida Criogénica) ===== -->
+    <div class="loader" id="loader" aria-label="Cargando contacto">
+        <canvas id="loader-canvas" class="loader__canvas"></canvas>
+        <div class="loader__content">
+            <div class="loader__brand" id="loader-brand">
+                <div class="loader__brand-mark">
+                    <img src="assets/emblem-gh.svg" width="300" height="195" alt="GH Servicios Técnicos" class="loader__brand-img">
+                </div>
+                <h2 class="loader__brand-name">GH SERVICIOS TÉCNICOS</h2>
+                <p class="loader__brand-slogan">Cárdenas, Tabasco · Venta · Instalación · Mantenimiento</p>
+            </div>
+            <div class="loader__scene">
+                <div class="loader__thermo">
+                    <div class="loader__tube">
+                        <div class="loader__tube-glass"></div>
+                        <div class="loader__mercury" id="loader-mercury"></div>
+                        <div class="loader__tube-frost" id="loader-tube-frost"></div>
+                        <div class="loader__scale">
+                            <span data-t="40°"></span>
+                            <span data-t="30°"></span>
+                            <span data-t="20°"></span>
+                            <span data-t="16°"></span>
+                        </div>
+                    </div>
+                    <div class="loader__bulb" id="loader-bulb">
+                        <div class="loader__bulb-glow"></div>
+                    </div>
+                </div>
+                <div class="loader__readout">
+                    <div class="loader__readout-temp">
+                        <span class="loader__readout-num" id="loader-temp">28</span>
+                        <span class="loader__readout-unit">°C</span>
+                    </div>
+                    <span class="loader__readout-label" id="loader-status">Cargando…</span>
+                </div>
+            </div>
+        </div>
+        <div class="loader__ice-overlay" id="loader-frost"></div>
+    </div>
+
+    <!-- ===== NAV ===== -->
+    <header class="nav" id="main-nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="GH Servicios Técnicos — Inicio">
+                <div class="nav__logo-svg-wrap">
+                    <img src="assets/emblem-gh.svg" width="46" height="30" alt="GH Logo" class="nav__logo-img">
+                </div>
+                <div class="nav__logo-text">
+                    <span class="nav__logo-brand">GH <span class="grad-text">SERVICIOS TÉCNICOS</span></span>
+                    <span class="nav__logo-sub">Cárdenas, Tabasco</span>
+                </div>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="equipos.html" class="nav__link">Catálogo Equipos</a>
+                <a href="calculadora.html" class="nav__link">Calculadora BTU</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="contacto.html" class="nav__link is-active">Contacto</a>
+            </nav>
+
+            <div class="nav__actions">
+                <a href="https://wa.me/529371037277?text=Hola%20GH%20Servicios%20T%C3%A9cnicos%2C%20quiero%20cotizar" class="nav__cta-wa" target="_blank" rel="noopener">
+                    <span>💬 937-103-7277 | Cotizar</span>
+                </a>
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+        <nav aria-label="Menú móvil">
+            <a href="index.html" class="nav__mob-link">Inicio</a>
+            <a href="servicios.html" class="nav__mob-link">Servicios</a>
+            <a href="equipos.html" class="nav__mob-link">Catálogo Equipos</a>
+            <a href="calculadora.html" class="nav__mob-link">Calculadora BTU</a>
+            <a href="nosotros.html" class="nav__mob-link">Nosotros</a>
+            <a href="contacto.html" class="nav__mob-link">Contacto</a>
+            <a href="https://wa.me/529371037277" class="btn btn--primary btn--full" target="_blank" rel="noopener">WhatsApp: 937-103-7277</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO ===== -->
+        <section class="page-hero">
+            <div class="frost-ambient"></div>
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px); position: relative; z-index: 2;">
+                <span class="services__kicker">ATENCIÓN PERSONALIZADA</span>
+                <h1 style="font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 800; color: #091124; margin-bottom: 1rem;">Contacto y Cobertura en Tabasco</h1>
+                <p style="font-size: 1.1rem; color: #475569; max-width: 760px; margin: 0 auto 2rem; line-height: 1.6;">
+                    Escríbenos directamente o llena el formulario. Respondemos al instante para agendar tu servicio técnico o asesorarte en la compra de minisplits, lavadoras y refrigeración.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== FORMULARIO & CANALES ===== -->
+        <section class="contact" id="contacto" style="padding-top: 2rem;">
+            <div class="contact__wrap">
+                <div class="contact__content">
+                    
+                    <div class="contact__info">
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">📱</span>
+                            <h3>WhatsApp Oficial</h3>
+                            <p>Cotizaciones inmediatas y atención directa para Cárdenas y la Chontalpa.</p>
+                            <a href="https://wa.me/529371037277" target="_blank" class="contact__info-link">937-103-7277</a>
+                        </div>
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">📞</span>
+                            <h3>Llamada Telefónica</h3>
+                            <p>Habla directamente con un técnico especialista en Tabasco.</p>
+                            <a href="tel:9371037277" class="contact__info-link">937-103-7277</a>
+                        </div>
+                        <div class="contact__info-card">
+                            <span class="contact__info-icon">⏰</span>
+                            <h3>Horarios de Servicio</h3>
+                            <p>Lunes a Sábado: 8:00 AM – 7:00 PM<br><strong>Atención de urgencias fines de semana.</strong></p>
+                        </div>
+                    </div>
+
+                    <form class="contact__form" id="contactForm">
+                        <h3 style="font-size: 1.3rem; font-weight: 800; color: #091124; margin-bottom: 1.25rem;">
+                            Solicitar Presupuesto Directo
+                        </h3>
+                        <div class="form-group">
+                            <label for="c-name">Nombre Completo</label>
+                            <input type="text" id="c-name" name="name" placeholder="Ej. Mariana Solís" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-colonia">Colonia o Municipio en Tabasco</label>
+                            <input type="text" id="c-colonia" name="colonia" placeholder="Ej. Cárdenas Centro, Comalcalco, Huimanguillo..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-service">Servicio Requerido</label>
+                            <select id="c-service" name="service" required>
+                                <option value="instalacion">Instalación de Minisplit Nuevo</option>
+                                <option value="mantenimiento">Mantenimiento Preventivo (Lavado a presión)</option>
+                                <option value="reparacion">Reparación de Fuga / Goteo de Agua</option>
+                                <option value="compra">Compra de Minisplit o Línea Blanca</option>
+                                <option value="otro">Asesoría / Otro servicio</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-notes">Detalles Adicionales</label>
+                            <textarea id="c-notes" name="notes" rows="3" placeholder="Ej. Marca Mirage de 1.5 Toneladas, hace ruido al arrancar..."></textarea>
+                        </div>
+
+                        <!-- Burbuja de WhatsApp en vivo -->
+                        <div class="contact__preview" id="waPreviewBox">
+                            <div class="contact__preview-bubble">
+                                <span class="contact__preview-label">Mensaje que se enviará a WhatsApp:</span>
+                                <p id="waPreviewText">Hola GH Servicios Técnicos, me gustaría cotizar...</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn--wa btn--full" id="btnSendWa">
+                            <span>Enviar Cotización a WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ZONAS DE COBERTURA ===== -->
+        <section style="padding: 5rem 0; background: #BAC7D5; border-top: 1px solid rgba(0, 98, 204, 0.12);">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem;">
+                    <span class="services__kicker">COBERTURA REGIONAL TABASCO</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #091124;">Zonas de Atención en Cárdenas y Municipios</h2>
+                    <p style="color: #475569; margin-top: 0.5rem;">Llegamos puntuales a Heroica Cárdenas y toda la región de la Chontalpa y costa.</p>
+                </div>
+
+                <div class="zones-grid">
+                    <div class="zone-card">
+                        <h4>📍 Heroica Cárdenas (Sede)</h4>
+                        <p>Cárdenas Centro, Guadalupe, Santa Rita, Infonavit Deportiva, Reyes Hernández, Calzada, Melchor Ocampo, Santa Rosalía, El Golpe y poblados.</p>
+                    </div>
+                    <div class="zone-card">
+                        <h4>📍 Comalcalco (La Chontalpa)</h4>
+                        <p>Cabecera municipal, San Isidro, Tecolutilla, Chichicapa, Villa Aldama, Oriente, zonas comerciales, residenciales y rancherías.</p>
+                    </div>
+                    <div class="zone-card">
+                        <h4>📍 Huimanguillo</h4>
+                        <p>Cabecera municipal, Chontalpa, Estación Chontalpa, La Venta, Paredón, campos agrícolas, comercios y fraccionamientos conurbados.</p>
+                    </div>
+                    <div class="zone-card">
+                        <h4>📍 Cunduacán</h4>
+                        <p>Centro, Huapacal, Culico, Piedra, Cucuyulapa, zona universitaria de la UJAT y corredores industriales.</p>
+                    </div>
+                    <div class="zone-card">
+                        <h4>📍 Paraíso (Costa y Dos Bocas)</h4>
+                        <p>Cabecera municipal, Puerto Ceiba, Chiltepec, El Bellote, refinería Olmeca Dos Bocas, empresas contratistas y fraccionamientos.</p>
+                    </div>
+                    <div class="zone-card">
+                        <h4>📍 Jalpa de Méndez y Villahermosa</h4>
+                        <p>Jalpa de Méndez cabecera, Iquinuapa, y servicios programados a la capital Villahermosa (Tabasco 2000, Carrizal, Tamulté).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PREGUNTAS FRECUENTES (FAQ) ===== -->
+        <section class="faq" id="faq" style="background: #BAC7D5; padding: 5rem 0;">
+            <div class="faq__wrap">
+                <div class="faq__header">
+                    <span class="faq__kicker">RESOLVEMOS TUS DUDAS</span>
+                    <h2 class="faq__title">Preguntas Frecuentes sobre Nuestros Servicios</h2>
+                </div>
+
+                <div class="faq__accordion">
+                    <div class="faq__item">
+                        <button class="faq__question" aria-expanded="false">
+                            <span>¿Por qué gotea agua mi aire acondicionado dentro de la habitación?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>El 95% de las veces se debe a que la charola de condensados o la manguera de desagüe está obstruida por acumulación de moho, polvo y gel de bacterias. Con nuestro mantenimiento profundo destapamos y sanitizamos la línea por completo.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__question" aria-expanded="false">
+                            <span>¿Cada cuánto tiempo se debe lavar un minisplit en Tabasco?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>En el clima de Tabasco (calor extremo continuo y humedad superior al 80%), lo ideal es realizar un mantenimiento preventivo cada 4 a 6 meses en uso residencial, y cada 2 a 3 meses en oficinas o comercios para evitar altos consumos de CFE y malos olores.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__question" aria-expanded="false">
+                            <span>¿Por qué es indispensable usar bomba de vacío en la instalación?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>La bomba de vacío extrae el aire y la humedad presentes en la tubería de cobre antes de abrir las válvulas de gas. Si no se hace vacío, la humedad se mezcla con el aceite del compresor formando ácido que degrada el motor y anula la garantía de fábrica.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__question" aria-expanded="false">
+                            <span>¿Entregan factura fiscal por los servicios o equipos?</span>
+                            <span class="faq__icon">+</span>
+                        </button>
+                        <div class="faq__answer">
+                            <p>Sí, emitimos factura fiscal electrónica (CFDI) para personas físicas y morales en todos nuestros servicios de instalación, mantenimiento y venta de minisplits y línea blanca.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/emblem-gh.svg" width="50" height="34" alt="GH Emblema">
+                        <span>GH SERVICIOS TÉCNICOS</span>
+                    </div>
+                    <p>Expertos en instalación, mantenimiento y venta de aire acondicionado y línea blanca en Cárdenas, Tabasco y la Chontalpa. Calidad y servicio 100% garantizado.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="equipos.html">Catálogo de Equipos</a></li>
+                        <li><a href="calculadora.html">Calculadora BTU</a></li>
+                        <li><a href="nosotros.html">Nosotros y Garantía</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#instalacion">Instalación Certificada</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento Profundo</a></li>
+                        <li><a href="servicios.html#reparacion">Reparación de Fugas</a></li>
+                        <li><a href="equipos.html">Venta de Minisplits y Línea Blanca</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Atención</h4>
+                    <p>Heroica Cárdenas, Tabasco, México</p>
+                    <p><strong>WhatsApp / Tel:</strong> <a href="https://wa.me/529371037277" style="color: #00B8FF;">937-103-7277</a></p>
+                    <p>Lunes a Sábado: 8:00 AM a 7:00 PM</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 GH Servicios Técnicos. Todos los derechos reservados. Heroica Cárdenas, Tabasco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="gh-widget-container"></div>
+
+    <script src="js/snow.js?v=25"></script>
+    <script type="module" src="js/main.js?v=25"></script>
+</body>
+</html>

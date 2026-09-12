@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lgGraphite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A4452"/>
+      <stop offset="50%" stop-color="#242B35"/>
+      <stop offset="100%" stop-color="#161B22"/>
+    </linearGradient>
+    <linearGradient id="doorRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="glassTint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#030712" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="lgShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" rx="24" fill="#F4F7FA"/>
+  <circle cx="200" cy="200" r="140" fill="radial-gradient(circle, rgba(168,85,247,0.15), transparent 70%)"/>
+
+  <g filter="url(#lgShadow)">
+    <!-- Main Cabinet -->
+    <rect x="95" y="60" width="210" height="280" rx="16" fill="url(#lgGraphite)" stroke="#475569" stroke-width="2"/>
+
+    <!-- Top Drawer & Display Section -->
+    <rect x="95" y="60" width="210" height="65" rx="14" fill="#1E2631" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Detergent Drawer Left -->
+    <rect x="110" y="74" width="55" height="38" rx="6" fill="#2A3441" stroke="#475569" stroke-width="1"/>
+    <line x1="120" y1="93" x2="155" y2="93" stroke="#64748B" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Rotary Control Center -->
+    <circle cx="200" cy="92" r="17" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="200" cy="92" r="6" fill="#0284C7"/>
+
+    <!-- Touch Display Right -->
+    <rect x="235" y="74" width="55" height="38" rx="6" fill="#090D14" stroke="#00D2FF" stroke-width="1"/>
+    <text x="262" y="94" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="700" fill="#00D2FF" text-anchor="middle">18:45</text>
+    <circle cx="248" cy="104" r="2" fill="#22C55E"/>
+    <circle cx="258" cy="104" r="2" fill="#00D2FF"/>
+    <circle cx="268" cy="104" r="2" fill="#E2E8F0"/>
+
+    <!-- Large Front Porthole Door -->
+    <circle cx="200" cy="225" r="76" fill="url(#doorRim)"/>
+    <circle cx="200" cy="225" r="65" fill="#0B0F17"/>
+    <circle cx="200" cy="225" r="58" fill="url(#glassTint)" stroke="#38BDF8" stroke-width="1.5"/>
+
+    <!-- Inner Stainless Steel Drum & Wave -->
+    <circle cx="200" cy="225" r="38" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 4"/>
+    <path d="M 180 235 Q 200 210 220 235" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Door Handle Indent -->
+    <rect x="264" y="210" width="10" height="30" rx="5" fill="#94A3B8"/>
+
+    <!-- Brand & Tech Badges -->
+    <rect x="135" y="315" width="130" height="18" rx="9" fill="#0F172A" stroke="#C026D3" stroke-width="1"/>
+    <text x="200" y="328" font-family="'Sora', sans-serif" font-size="9" font-weight="700" fill="#E879F9" text-anchor="middle">LG AI DD · TURBOWASH 22KG</text>
+
+    <!-- Bottom Kickplate -->
+    <line x1="95" y1="305" x2="305" y2="305" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="280" cy="325" r="7" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+
+    <!-- Feet -->
+    <rect x="110" y="338" width="22" height="8" rx="2" fill="#0F172A"/>
+    <rect x="268" y="338" width="22" height="8" rx="2" fill="#0F172A"/>
+  </g>
+</svg>

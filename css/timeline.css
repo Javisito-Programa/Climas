@@ -1,0 +1,111 @@
+/* ==========================================================================
+   GH SERVICIOS TÉCNICOS — PROCESO EN 4 PASOS (CLEAN PIPELINE CARDS)
+   ========================================================================== */
+
+.timeline {
+  padding: 5rem 0 6rem;
+  background: #BAC7D5;
+  position: relative;
+  border-top: 1px solid rgba(0, 98, 204, 0.14);
+}
+
+.timeline__wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+}
+
+.timeline__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.timeline__kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0062CC;
+  background: rgba(0, 98, 204, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 98, 204, 0.18);
+  margin-bottom: 0.75rem;
+}
+
+.timeline__title {
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 800;
+  color: #091124;
+  margin-bottom: 0.75rem;
+}
+
+.timeline__subtitle {
+  font-size: 1rem;
+  color: #475569;
+}
+
+.timeline__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.timeline__step {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 98, 204, 0.16);
+  padding: 2.2rem 1.6rem;
+  box-shadow: 0 8px 24px rgba(9, 26, 68, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.timeline__step:hover {
+  transform: translateY(-5px);
+  border-color: #0062CC;
+  box-shadow: 0 16px 36px rgba(0, 98, 204, 0.15);
+}
+
+.timeline__step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0062CC, #00B8FF);
+  color: #FFFFFF;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.25rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 98, 204, 0.3);
+}
+
+.timeline__step-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #091124;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.timeline__step-desc {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding: 3.5rem 0 4.5rem;
+  }
+  .timeline__steps {
+    grid-template-columns: 1fr;
+  }
+}

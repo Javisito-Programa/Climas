@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Climas, Lavadoras y Refrigeración | GH Servicios Técnicos Cárdenas</title>
+    <meta name="description" content="Venta de minisplits Inverter, lavadoras, refrigeración y protectores de voltaje en Cárdenas, Tabasco. Mirage, Carrier, LG, Mabe, Hisense, Prime. WhatsApp: 937-103-7277.">
+    <meta name="theme-color" content="#0062CC">
+    <link rel="icon" type="image/svg+xml" href="assets/emblem-gh.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=25">
+    <link rel="stylesheet" href="css/loader.css?v=25">
+    <link rel="stylesheet" href="css/snow.css?v=25">
+    <link rel="stylesheet" href="css/nav.css?v=25">
+    <link rel="stylesheet" href="css/catalog.css?v=25">
+    <link rel="stylesheet" href="css/brands.css?v=25">
+    <link rel="stylesheet" href="css/footer.css?v=25">
+    <link rel="stylesheet" href="css/widget.css?v=25">
+    <style>
+        .page-hero {
+            padding: 8rem 0 3.5rem;
+            background: linear-gradient(180deg, #B2C0CF 0%, #BAC7D5 100%);
+            text-align: center;
+            position: relative;
+        }
+        .trust-banner {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 98, 204, 0.12);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 50, 120, 0.04);
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .trust-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .trust-info h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #091124;
+            margin-bottom: 0.2rem;
+        }
+        .trust-info p {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+        @media (max-width: 768px) {
+            .trust-banner {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+    <!-- Canvas de Nieve y Escarcha Polar -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- ===== LOADER (Transición Rápida Criogénica) ===== -->
+    <div class="loader" id="loader" aria-label="Cargando catálogo">
+        <canvas id="loader-canvas" class="loader__canvas"></canvas>
+        <div class="loader__content">
+            <div class="loader__brand" id="loader-brand">
+                <div class="loader__brand-mark">
+                    <img src="assets/emblem-gh.svg" width="300" height="195" alt="GH Servicios Técnicos" class="loader__brand-img">
+                </div>
+                <h2 class="loader__brand-name">GH SERVICIOS TÉCNICOS</h2>
+                <p class="loader__brand-slogan">Cárdenas, Tabasco · Minisplits · Lavadoras · Refrigeración</p>
+            </div>
+            <div class="loader__scene">
+                <div class="loader__thermo">
+                    <div class="loader__tube">
+                        <div class="loader__tube-glass"></div>
+                        <div class="loader__mercury" id="loader-mercury"></div>
+                        <div class="loader__tube-frost" id="loader-tube-frost"></div>
+                        <div class="loader__scale">
+                            <span data-t="40°"></span>
+                            <span data-t="30°"></span>
+                            <span data-t="20°"></span>
+                            <span data-t="16°"></span>
+                        </div>
+                    </div>
+                    <div class="loader__bulb" id="loader-bulb">
+                        <div class="loader__bulb-glow"></div>
+                    </div>
+                </div>
+                <div class="loader__readout">
+                    <div class="loader__readout-temp">
+                        <span class="loader__readout-num" id="loader-temp">28</span>
+                        <span class="loader__readout-unit">°C</span>
+                    </div>
+                    <span class="loader__readout-label" id="loader-status">Cargando catálogo…</span>
+                </div>
+            </div>
+        </div>
+        <div class="loader__ice-overlay" id="loader-frost"></div>
+    </div>
+
+    <!-- ===== NAV ===== -->
+    <header class="nav" id="main-nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="GH Servicios Técnicos — Inicio">
+                <div class="nav__logo-svg-wrap">
+                    <img src="assets/emblem-gh.svg" width="46" height="30" alt="GH Logo" class="nav__logo-img">
+                </div>
+                <div class="nav__logo-text">
+                    <span class="nav__logo-brand">GH <span class="grad-text">SERVICIOS TÉCNICOS</span></span>
+                    <span class="nav__logo-sub">Cárdenas, Tabasco</span>
+                </div>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="equipos.html" class="nav__link is-active">Catálogo Equipos</a>
+                <a href="calculadora.html" class="nav__link">Calculadora BTU</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="contacto.html" class="nav__link">Contacto</a>
+            </nav>
+
+            <div class="nav__actions">
+                <a href="https://wa.me/529371037277?text=Hola%20GH%20Servicios%20T%C3%A9cnicos%2C%20quiero%20cotizar%20un%20equipo" class="nav__cta-wa" target="_blank" rel="noopener">
+                    <span>💬 937-103-7277 | Cotizar</span>
+                </a>
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+        <nav aria-label="Menú móvil">
+            <a href="index.html" class="nav__mob-link">Inicio</a>
+            <a href="servicios.html" class="nav__mob-link">Servicios</a>
+            <a href="equipos.html" class="nav__mob-link">Catálogo Equipos</a>
+            <a href="calculadora.html" class="nav__mob-link">Calculadora BTU</a>
+            <a href="nosotros.html" class="nav__mob-link">Nosotros</a>
+            <a href="contacto.html" class="nav__mob-link">Contacto</a>
+            <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20quiero%20comprar%20un%20clima" class="btn btn--primary btn--full" target="_blank" rel="noopener">WhatsApp: 937-103-7277</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO DE TIENDA ===== -->
+        <section class="page-hero">
+            <div class="frost-ambient"></div>
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px); position: relative; z-index: 2;">
+                <span class="services__kicker">TIENDA Y CATÁLOGO OFICIAL 2026</span>
+                <h1 style="font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 800; color: #091124; margin-bottom: 1rem;">Catálogo de Climas, Lavadoras y Refrigeración</h1>
+                <p style="font-size: 1.1rem; color: #475569; max-width: 760px; margin: 0 auto 2rem; line-height: 1.6;">
+                    Equipos nuevos en caja sellada con recubrimiento anticorrosivo Gold Fin y tecnología Inverter. Minisplits, lavadoras automáticas, refrigeración y protectores con entrega e instalación en Cárdenas y toda la Chontalpa.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== TIENDA / PRODUCTOS ===== -->
+        <section class="catalog-section" style="padding-top: 2rem;">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                
+                <!-- Banner de Confianza -->
+                <div class="trust-banner">
+                    <div class="trust-item">
+                        <span class="trust-icon">🚚</span>
+                        <div class="trust-info">
+                            <h4>Entrega Rápida en Cárdenas y la Chontalpa</h4>
+                            <p>Cobertura en Cárdenas, Comalcalco, Huimanguillo, Cunduacán y Paraíso.</p>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">🛡️</span>
+                        <div class="trust-info">
+                            <h4>Garantía Extendida GH</h4>
+                            <p>Respaldada por escrito en equipo y mano de obra.</p>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">⚡</span>
+                        <div class="trust-info">
+                            <h4>Instalación Certificada 24h</h4>
+                            <p>Técnicos especialistas con bomba de vacío.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra de Filtros y Buscador -->
+                <div class="catalog__filters-bar">
+                    <div class="catalog__tabs">
+                        <button type="button" class="catalog-tab is-active" data-filter="all">Todos los Equipos</button>
+                        <button type="button" class="catalog-tab" data-filter="climas">❄️ Minisplits Inverter</button>
+                        <button type="button" class="catalog-tab" data-filter="lavadoras">🧺 Lavadoras Automáticas</button>
+                        <button type="button" class="catalog-tab" data-filter="refrigeracion">🧊 Refrigeración</button>
+                        <button type="button" class="catalog-tab" data-filter="refacciones">⚡ Protectores Voltaje</button>
+                    </div>
+
+                    <div class="catalog__search-box">
+                        <span class="catalog__search-icon">🔍</span>
+                        <input type="text" class="catalog__search-input" id="catalogSearch" placeholder="Buscar por marca o producto...">
+                    </div>
+                </div>
+
+                <!-- Grilla de Productos Dinámica -->
+                <div class="catalog__grid" id="catalogGrid">
+                    <!-- Rellenado por js/catalog.js -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== MARCAS ===== -->
+        <section class="brands" style="background: #FFFFFF; padding: 4rem 0;">
+            <div class="brands__wrap">
+                <div class="brands__header">
+                    <span class="brands__label">DISTRIBUCIÓN Y RESPALDO DIRECTO DE MARCAS LÍDERES</span>
+                </div>
+                <div class="brands__track-container">
+                    <div class="brands__track">
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/mirage.png" alt="Mirage" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">AUTORIZADO // TAB</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/carrier.png" alt="Carrier" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">HEAVY DUTY</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/lg.png" alt="LG" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">DUAL COMPRESSOR</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/mabe.png" alt="Mabe" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">TUBERÍA COBRE</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/midea.png" alt="Midea" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SEER 22+ TECH</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/hisense.png" alt="Hisense" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SMART INVERTER</span></div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-item__pod"><img src="Logos/prime.png" alt="Prime" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">ECO R32 FLUID</span></div>
+                        </div>
+
+                        <!-- Repetición para ciclo infinito -->
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/mirage.png" alt="Mirage" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">AUTORIZADO // TAB</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/carrier.png" alt="Carrier" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">HEAVY DUTY</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/lg.png" alt="LG" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">DUAL COMPRESSOR</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/mabe.png" alt="Mabe" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">TUBERÍA COBRE</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/midea.png" alt="Midea" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SEER 22+ TECH</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/hisense.png" alt="Hisense" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">SMART INVERTER</span></div>
+                        </div>
+                        <div class="brand-item" aria-hidden="true">
+                            <div class="brand-item__pod"><img src="Logos/prime.png" alt="Prime" class="brand-item__logo" loading="lazy"></div>
+                            <div class="brand-item__meta"><span class="brand-item__badge">ECO R32 FLUID</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/emblem-gh.svg" width="50" height="34" alt="GH Emblema">
+                        <span>GH SERVICIOS TÉCNICOS</span>
+                    </div>
+                    <p>Expertos en instalación, mantenimiento y venta de aire acondicionado y línea blanca en Cárdenas, Tabasco y la Chontalpa. Calidad y servicio 100% garantizado.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="equipos.html">Catálogo de Equipos</a></li>
+                        <li><a href="calculadora.html">Calculadora BTU</a></li>
+                        <li><a href="nosotros.html">Nosotros y Garantía</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#instalacion">Instalación Certificada</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento Profundo</a></li>
+                        <li><a href="servicios.html#reparacion">Reparación de Fugas</a></li>
+                        <li><a href="equipos.html">Venta de Minisplits y Línea Blanca</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Atención</h4>
+                    <p>Heroica Cárdenas, Tabasco, México</p>
+                    <p><strong>WhatsApp / Tel:</strong> <a href="https://wa.me/529371037277" style="color: #00B8FF;">937-103-7277</a></p>
+                    <p>Lunes a Sábado: 8:00 AM a 7:00 PM</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 GH Servicios Técnicos. Todos los derechos reservados. Heroica Cárdenas, Tabasco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="gh-widget-container"></div>
+
+    <script src="js/snow.js?v=25"></script>
+    <script src="js/catalog.js?v=25"></script>
+    <script type="module" src="js/main.js?v=25"></script>
+</body>
+</html>

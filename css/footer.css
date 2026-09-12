@@ -1,0 +1,140 @@
+/* ==========================================================================
+   GH SERVICIOS TÉCNICOS — FOOTER (HIGH LUXURY TECH NAVY - CÁRDENAS TABASCO)
+   ========================================================================== */
+
+footer.footer,
+.footer {
+  border-top: 2px solid rgba(0, 98, 204, 0.3) !important;
+  background: #06152b !important;
+  color: #FFFFFF !important;
+  padding: 4.5rem 0 2rem !important;
+  position: relative !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  clear: both !important;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00D2FF 30%, #0062CC 70%, transparent);
+}
+
+.footer__wrap {
+  max-width: var(--max-w, 1220px) !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) !important;
+}
+
+.footer__top {
+  display: grid !important;
+  grid-template-columns: 1.3fr 1fr 1.1fr 1.2fr !important;
+  gap: 2.8rem !important;
+  align-items: start !important;
+}
+
+.footer__logo {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.85rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.footer__logo img {
+  width: 48px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.footer__logo span {
+  font-family: var(--font-sans, 'Sora', sans-serif) !important;
+  font-size: 1.12rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  color: #FFFFFF !important;
+}
+
+.footer__brand p {
+  font-size: 0.88rem !important;
+  color: #94A3B8 !important;
+  line-height: 1.65 !important;
+  max-width: 320px !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.footer__col h4 {
+  font-family: var(--font-sans, 'Sora', sans-serif) !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #00D2FF !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.footer__col ul {
+  list-style: none !important;
+  list-style-type: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.65rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer__col ul li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer__col ul li a {
+  font-size: 0.88rem !important;
+  color: #CBD5E1 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+  display: inline-block !important;
+}
+
+.footer__col ul li a:hover {
+  color: #00D2FF !important;
+  transform: translateX(4px) !important;
+}
+
+.footer__col p {
+  font-size: 0.88rem !important;
+  color: #94A3B8 !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0.65rem !important;
+}
+
+.footer__col p strong {
+  color: #FFFFFF !important;
+}
+
+.footer__bottom {
+  margin-top: 3.5rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  text-align: center !important;
+  font-size: 0.82rem !important;
+  color: #64748B !important;
+}
+
+@media (max-width: 900px) {
+  .footer__top {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .footer__top {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}

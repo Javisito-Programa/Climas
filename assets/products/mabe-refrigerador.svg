@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fridgeSteel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D9E2EC"/>
+      <stop offset="35%" stop-color="#F0F4F8"/>
+      <stop offset="70%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="dispenser" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="fridgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#091E42" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" rx="24" fill="#F4F7FA"/>
+  <circle cx="200" cy="200" r="145" fill="radial-gradient(circle, rgba(0,210,255,0.18), transparent 70%)"/>
+
+  <g filter="url(#fridgeShadow)">
+    <!-- Main Cabinet Shadow Rim -->
+    <rect x="120" y="40" width="160" height="320" rx="14" fill="#64748B"/>
+
+    <!-- Top Freezer Door -->
+    <rect x="122" y="42" width="156" height="95" rx="10" fill="url(#fridgeSteel)" stroke="#CBD5E1" stroke-width="1.5"/>
+    <!-- Freezer Brand Emblem -->
+    <rect x="180" y="52" width="40" height="12" rx="3" fill="#0062CC"/>
+    <text x="200" y="61" font-family="'Sora', sans-serif" font-size="7" font-weight="800" fill="#FFFFFF" text-anchor="middle">MABE</text>
+
+    <!-- Freezer Handle Pocket -->
+    <rect x="264" y="105" width="8" height="24" rx="4" fill="#475569"/>
+
+    <!-- Door Separation Gap -->
+    <rect x="122" y="139" width="156" height="6" fill="#1E293B"/>
+
+    <!-- Bottom Refrigerator Door -->
+    <rect x="122" y="147" width="156" height="205" rx="10" fill="url(#fridgeSteel)" stroke="#CBD5E1" stroke-width="1.5"/>
+
+    <!-- Water & Ice Dispenser Unit -->
+    <rect x="145" y="175" width="55" height="75" rx="8" fill="url(#dispenser)" stroke="#475569" stroke-width="1.5"/>
+    <rect x="155" y="215" width="35" height="26" rx="4" fill="#090D14" stroke="#00D2FF" stroke-width="1"/>
+    <!-- Water Drop Icon -->
+    <path d="M 172 195 C 172 195 166 203 166 206 C 166 209 169 211 172 211 C 175 211 178 209 178 206 C 178 203 172 195 172 195 Z" fill="#00D2FF"/>
+
+    <!-- Main Door Handle Pocket -->
+    <rect x="264" y="160" width="8" height="35" rx="4" fill="#475569"/>
+
+    <!-- No Frost / Smart Inverter Badges -->
+    <rect x="145" y="270" width="110" height="22" rx="6" fill="#FFFFFF" stroke="#00D2FF" stroke-width="1"/>
+    <text x="200" y="284" font-family="'Sora', sans-serif" font-size="8.5" font-weight="800" fill="#0062CC" text-anchor="middle">NO FROST · 14 PIES</text>
+
+    <!-- Energy Star Badge -->
+    <rect x="155" y="300" width="90" height="18" rx="9" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/>
+    <text x="200" y="312.5" font-family="'Sora', sans-serif" font-size="8" font-weight="700" fill="#15803D" text-anchor="middle">AHORRO ENERGÉTICO</text>
+
+    <!-- Base Levelers -->
+    <rect x="135" y="352" width="25" height="8" rx="2" fill="#1E293B"/>
+    <rect x="240" y="352" width="25" height="8" rx="2" fill="#1E293B"/>
+  </g>
+</svg>

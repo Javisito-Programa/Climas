@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Capacidad BTU para Tabasco | GH Servicios Técnicos</title>
+    <meta name="description" content="Calcula cuántos BTUs y toneladas necesita tu habitación o negocio en Cárdenas y Tabasco. Evita cobros excesivos de CFE con el tonelaje exacto. WhatsApp: 937-103-7277.">
+    <meta name="theme-color" content="#0062CC">
+    <link rel="icon" type="image/svg+xml" href="assets/emblem-gh.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css?v=25">
+    <link rel="stylesheet" href="css/loader.css?v=25">
+    <link rel="stylesheet" href="css/snow.css?v=25">
+    <link rel="stylesheet" href="css/nav.css?v=25">
+    <link rel="stylesheet" href="css/calculator.css?v=25">
+    <link rel="stylesheet" href="css/footer.css?v=25">
+    <link rel="stylesheet" href="css/widget.css?v=25">
+    <style>
+        .page-hero {
+            padding: 8rem 0 3.5rem;
+            background: linear-gradient(180deg, #B2C0CF 0%, #BAC7D5 100%);
+            text-align: center;
+            position: relative;
+        }
+        .calc-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .calc-info-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 98, 204, 0.12);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 4px 18px rgba(0, 50, 120, 0.04);
+        }
+        .calc-info-card__ton {
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: var(--font-mono);
+            color: #0062CC;
+            margin-bottom: 0.25rem;
+        }
+        .calc-info-card__btu {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #64748B;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .calc-info-card__desc {
+            font-size: 0.88rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+    <!-- Canvas de Nieve y Escarcha Polar -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- ===== LOADER (Transición Rápida Criogénica) ===== -->
+    <div class="loader" id="loader" aria-label="Cargando calculadora">
+        <canvas id="loader-canvas" class="loader__canvas"></canvas>
+        <div class="loader__content">
+            <div class="loader__brand" id="loader-brand">
+                <div class="loader__brand-mark">
+                    <img src="assets/emblem-gh.svg" width="300" height="195" alt="GH Servicios Técnicos" class="loader__brand-img">
+                </div>
+                <h2 class="loader__brand-name">GH SERVICIOS TÉCNICOS</h2>
+                <p class="loader__brand-slogan">Cárdenas, Tabasco · Minisplits · Lavadoras · Refrigeración</p>
+            </div>
+            <div class="loader__scene">
+                <div class="loader__thermo">
+                    <div class="loader__tube">
+                        <div class="loader__tube-glass"></div>
+                        <div class="loader__mercury" id="loader-mercury"></div>
+                        <div class="loader__tube-frost" id="loader-tube-frost"></div>
+                        <div class="loader__scale">
+                            <span data-t="40°"></span>
+                            <span data-t="30°"></span>
+                            <span data-t="20°"></span>
+                            <span data-t="16°"></span>
+                        </div>
+                    </div>
+                    <div class="loader__bulb" id="loader-bulb">
+                        <div class="loader__bulb-glow"></div>
+                    </div>
+                </div>
+                <div class="loader__readout">
+                    <div class="loader__readout-temp">
+                        <span class="loader__readout-num" id="loader-temp">28</span>
+                        <span class="loader__readout-unit">°C</span>
+                    </div>
+                    <span class="loader__readout-label" id="loader-status">Cargando calculadora…</span>
+                </div>
+            </div>
+        </div>
+        <div class="loader__ice-overlay" id="loader-frost"></div>
+    </div>
+
+    <!-- ===== NAV ===== -->
+    <header class="nav" id="main-nav">
+        <div class="nav__wrap">
+            <a href="index.html" class="nav__logo" aria-label="GH Servicios Técnicos — Inicio">
+                <div class="nav__logo-svg-wrap">
+                    <img src="assets/emblem-gh.svg" width="46" height="30" alt="GH Logo" class="nav__logo-img">
+                </div>
+                <div class="nav__logo-text">
+                    <span class="nav__logo-brand">GH <span class="grad-text">SERVICIOS TÉCNICOS</span></span>
+                    <span class="nav__logo-sub">Cárdenas, Tabasco</span>
+                </div>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="equipos.html" class="nav__link">Catálogo Equipos</a>
+                <a href="calculadora.html" class="nav__link is-active">Calculadora BTU</a>
+                <a href="nosotros.html" class="nav__link">Nosotros</a>
+                <a href="contacto.html" class="nav__link">Contacto</a>
+            </nav>
+
+            <div class="nav__actions">
+                <a href="https://wa.me/529371037277?text=Hola%20GH%20Servicios%20T%C3%A9cnicos%2C%20quiero%20asesor%C3%ADa%20BTU" class="nav__cta-wa" target="_blank" rel="noopener">
+                    <span>💬 937-103-7277 | Cotizar</span>
+                </a>
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+        <nav aria-label="Menú móvil">
+            <a href="index.html" class="nav__mob-link">Inicio</a>
+            <a href="servicios.html" class="nav__mob-link">Servicios</a>
+            <a href="equipos.html" class="nav__mob-link">Catálogo Equipos</a>
+            <a href="calculadora.html" class="nav__mob-link">Calculadora BTU</a>
+            <a href="nosotros.html" class="nav__mob-link">Nosotros</a>
+            <a href="contacto.html" class="nav__mob-link">Contacto</a>
+            <a href="https://wa.me/529371037277" class="btn btn--primary btn--full" target="_blank" rel="noopener">WhatsApp: 937-103-7277</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ===== HERO ===== -->
+        <section class="page-hero">
+            <div class="frost-ambient"></div>
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px); position: relative; z-index: 2;">
+                <span class="services__kicker">CALIBRADA PARA EL CALOR EXTREMO DE TABASCO</span>
+                <h1 style="font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 800; color: #091124; margin-bottom: 1rem;">Calculadora Térmica de Minisplits</h1>
+                <p style="font-size: 1.1rem; color: #475569; max-width: 760px; margin: 0 auto 2rem; line-height: 1.6;">
+                    En Tabasco, con sensaciones térmicas de hasta 45°C, un equipo mal dimensionado trabaja forzado las 24 horas, no enfría y dispara tu tarifa en CFE. Calcula en 30 segundos la capacidad exacta para tu espacio.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== CALCULADORA INTERACTIVA ===== -->
+        <section class="calculator-section" id="calculator" style="padding: 2rem 0 5rem;">
+            <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
+                
+                <div class="calc-layout" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: start;">
+                    
+                    <!-- Formulario de Parámetros -->
+                    <div class="calc-inputs-card" style="background: #FFFFFF; border-radius: 24px; border: 1px solid rgba(0,98,204,0.12); padding: 2.2rem; box-shadow: 0 10px 35px rgba(9,17,36,0.05);">
+                        <h2 style="font-size: 1.35rem; font-weight: 800; color: #091124; margin-bottom: 1.5rem;">
+                            1. Dimensiones y Condiciones del Espacio
+                        </h2>
+
+                        <!-- Slider Metros Cuadrados -->
+                        <div style="margin-bottom: 2rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                                <label for="calc-area" style="font-size: 0.9rem; font-weight: 700; color: #1E293B;">Área del espacio (m²):</label>
+                                <span id="calc-area-val" style="font-size: 1.3rem; font-weight: 900; font-family: var(--font-mono); color: #0062CC;">16 m²</span>
+                            </div>
+                            <input type="range" id="calc-area" min="8" max="60" value="16" step="1" style="width: 100%; accent-color: #0062CC; cursor: pointer;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #8896AB; margin-top: 0.35rem;">
+                                <span>8 m² (Recámara chica)</span>
+                                <span>25 m² (Sala)</span>
+                                <span>60 m² (Área abierta)</span>
+                            </div>
+                        </div>
+
+                        <!-- Exposición al Sol -->
+                        <div style="margin-bottom: 2rem;">
+                            <label style="font-size: 0.9rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.75rem;">
+                                Exposición al Sol en Techo / Losa:
+                            </label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <label class="calc-radio-label" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem; border: 1px solid #E2E8F0; border-radius: 12px; cursor: pointer;">
+                                    <input type="radio" name="sun" value="high" checked style="accent-color: #0062CC;">
+                                    <div>
+                                        <strong style="display: block; font-size: 0.85rem; color: #091124;">Sol Directo (Techo)</strong>
+                                        <span style="font-size: 0.72rem; color: #64748B;">Losa expuesta a más de 40°C</span>
+                                    </div>
+                                </label>
+                                <label class="calc-radio-label" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem; border: 1px solid #E2E8F0; border-radius: 12px; cursor: pointer;">
+                                    <input type="radio" name="sun" value="low" style="accent-color: #0062CC;">
+                                    <div>
+                                        <strong style="display: block; font-size: 0.85rem; color: #091124;">Planta Baja / Sombra</strong>
+                                        <span style="font-size: 0.72rem; color: #64748B;">Entrepiso o techo techado</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Ocupantes -->
+                        <div style="margin-bottom: 2rem;">
+                            <label for="calc-occupants" style="font-size: 0.9rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.5rem;">
+                                Número de Personas en la Habitación:
+                            </label>
+                            <select id="calc-occupants" style="width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #CBD5E1; font-size: 0.9rem; outline: none;">
+                                <option value="1">1 a 2 Personas (Uso normal recámara)</option>
+                                <option value="3">3 a 4 Personas (Sala de estar familiar)</option>
+                                <option value="6">5 o más Personas (Reuniones / Oficina)</option>
+                            </select>
+                        </div>
+
+                        <!-- Dispositivos / Carga Térmica -->
+                        <div>
+                            <label for="calc-electronics" style="font-size: 0.9rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.5rem;">
+                                Aparatos Eléctricos Generadores de Calor:
+                            </label>
+                            <select id="calc-electronics" style="width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #CBD5E1; font-size: 0.9rem; outline: none;">
+                                <option value="low">Bajo (TV, lámparas LED)</option>
+                                <option value="med">Medio (Computadora de escritorio, consolas gamer)</option>
+                                <option value="high">Alto (Cocina cercana, refrigerador grande, servidores)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Resultado Dinámica -->
+                    <div class="calc-result-card" style="background: linear-gradient(135deg, #071B38, #0047AB, #0066FF); border-radius: 24px; padding: 2.5rem; color: #FFFFFF; box-shadow: 0 15px 40px rgba(0, 71, 171, 0.3); position: sticky; top: 6rem;">
+                        <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; color: #00D2FF; text-transform: uppercase;">DIAGNÓSTICO TÉRMICO GH</span>
+                        <div style="margin: 1rem 0;">
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Capacidad Sugerida:</div>
+                            <div id="calc-result-tons" style="font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900; font-family: var(--font-mono); line-height: 1.1; margin: 0.25rem 0;">
+                                1.5 TONELADAS
+                            </div>
+                            <div id="calc-result-btu" style="font-size: 1.1rem; color: #00D2FF; font-weight: 700; font-family: var(--font-mono);">
+                                18,000 BTU/h
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border-radius: 14px; padding: 1.25rem; margin: 1.5rem 0;">
+                            <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+                                <strong>⚡ Voltaje Sugerido:</strong> 220V Bifásico
+                            </div>
+                            <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+                                <strong>🌱 Tecnología Recomendada:</strong> Inverter SEER 20+
+                            </div>
+                            <div style="font-size: 0.85rem; color: #34D399;">
+                                <strong>💰 Ahorro Estimado CFE:</strong> <span id="calc-result-saving">~$1,200 MXN / bimestre</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/529371037277?text=Hola%20GH%2C%20utilic%C3%A9%20su%20calculadora%20y%20mi%20espacio%20requiere%201.5%20Toneladas%20(18%2C000%20BTU).%20%C2%BFQu%C3%A9%20equipos%20tienen%20disponibles%20con%20instalaci%C3%B3n%20en%20C%C3%A1rdenas%3F" 
+                           id="calcWaBtn" class="btn btn--wa btn--full" target="_blank" rel="noopener" style="justify-content: center; font-size: 1rem; padding: 0.9rem;">
+                            💬 Cotizar Esta Capacidad por WhatsApp
+                        </a>
+                        <small style="display: block; text-align: center; color: rgba(255,255,255,0.7); font-size: 0.72rem; margin-top: 0.85rem;">
+                            *Asesoría técnica sin costo a domicilio en Cárdenas y la Chontalpa.
+                        </small>
+                    </div>
+
+                </div>
+
+                <!-- Guía Rápida de Capacidades -->
+                <div class="calc-info-grid">
+                    <div class="calc-info-card">
+                        <div class="calc-info-card__ton">1.0 TON</div>
+                        <div class="calc-info-card__btu">12,000 BTU / 220V</div>
+                        <p class="calc-info-card__desc">Ideal para recámaras individuales, estudios o cuartos de niños de <strong>hasta 16 m²</strong> con 1 ventana.</p>
+                    </div>
+                    <div class="calc-info-card">
+                        <div class="calc-info-card__ton">1.5 TON</div>
+                        <div class="calc-info-card__btu">18,000 BTU / 220V</div>
+                        <p class="calc-info-card__desc">Para recámaras principales grandes o salas de TV de <strong>16 a 24 m²</strong> con techo expuesto al sol.</p>
+                    </div>
+                    <div class="calc-info-card">
+                        <div class="calc-info-card__ton">2.0 TON</div>
+                        <div class="calc-info-card__btu">24,000 BTU / 220V</div>
+                        <p class="calc-info-card__desc">Recomendado para salas-comedor continuas o consultorios de <strong>25 a 36 m²</strong> en Tabasco.</p>
+                    </div>
+                    <div class="calc-info-card">
+                        <div class="calc-info-card__ton">3.0 TON</div>
+                        <div class="calc-info-card__btu">36,000 BTU / 220V</div>
+                        <p class="calc-info-card__desc">Locales comerciales, oficinas con personal y espacios de techos altos de <strong>más de 40 m²</strong>.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__wrap">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/emblem-gh.svg" width="50" height="34" alt="GH Emblema">
+                        <span>GH SERVICIOS TÉCNICOS</span>
+                    </div>
+                    <p>Expertos en instalación, mantenimiento y venta de aire acondicionado y línea blanca en Cárdenas, Tabasco y la Chontalpa. Calidad y servicio 100% garantizado.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Páginas</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="equipos.html">Catálogo de Equipos</a></li>
+                        <li><a href="calculadora.html">Calculadora BTU</a></li>
+                        <li><a href="nosotros.html">Nosotros y Garantía</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="servicios.html#instalacion">Instalación Certificada</a></li>
+                        <li><a href="servicios.html#mantenimiento">Mantenimiento Profundo</a></li>
+                        <li><a href="servicios.html#reparacion">Reparación de Fugas</a></li>
+                        <li><a href="equipos.html">Venta de Minisplits y Línea Blanca</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Atención</h4>
+                    <p>Heroica Cárdenas, Tabasco, México</p>
+                    <p><strong>WhatsApp / Tel:</strong> <a href="https://wa.me/529371037277" style="color: #00B8FF;">937-103-7277</a></p>
+                    <p>Lunes a Sábado: 8:00 AM a 7:00 PM</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 GH Servicios Técnicos. Todos los derechos reservados. Heroica Cárdenas, Tabasco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="gh-widget-container"></div>
+
+    <script src="js/snow.js?v=25"></script>
+    <script type="module" src="js/main.js?v=25"></script>
+</body>
+</html>

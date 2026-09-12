@@ -1,0 +1,272 @@
+/* ==========================================================================
+   GH SERVICIOS TÉCNICOS — CONTACTO Y FORMULARIO WHATSAPP (HIGH LUXURY TECH)
+   ========================================================================== */
+
+.contact {
+  padding: 5rem 0 6rem;
+  background: #BAC7D5;
+  position: relative;
+  border-top: 1px solid rgba(0, 98, 204, 0.12);
+}
+
+.contact__wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  position: relative;
+  z-index: 2;
+}
+
+.contact__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.contact__kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0062CC;
+  background: rgba(0, 98, 204, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 98, 204, 0.18);
+  margin-bottom: 0.75rem;
+}
+
+.contact__title {
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 800;
+  color: #091124;
+  margin-bottom: 0.75rem;
+}
+
+.contact__subtitle {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Grilla de 2 Columnas */
+.contact__content {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Columna Izquierda: Tarjetas de Información */
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact__info-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 98, 204, 0.16);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 8px 24px rgba(9, 26, 68, 0.06);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact__info-card:hover {
+  transform: translateY(-3px);
+  border-color: #0062CC;
+  box-shadow: 0 14px 35px rgba(0, 98, 204, 0.14);
+}
+
+.contact__info-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(0, 98, 204, 0.08);
+  border: 1px solid rgba(0, 98, 204, 0.18);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.contact__info-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #091124;
+  margin-bottom: 0.4rem;
+}
+
+.contact__info-card p {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.contact__info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0062CC;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact__info-link:hover {
+  color: #0088FF;
+  text-decoration: underline;
+}
+
+/* Columna Derecha: Tarjeta de Formulario */
+.contact__form {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 98, 204, 0.16);
+  padding: 2.5rem;
+  box-shadow: 0 12px 35px rgba(9, 26, 68, 0.08);
+}
+
+.contact__form h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #091124;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #E2E8F0;
+  padding-bottom: 0.85rem;
+}
+
+.form-group,
+.contact__field {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label,
+.contact__field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1E293B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.45rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #091124;
+  font-family: var(--font-sans, sans-serif);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.contact__field input:focus,
+.contact__field select:focus,
+.contact__field textarea:focus {
+  border-color: #0062CC;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3.5px rgba(0, 98, 204, 0.14);
+}
+
+.form-group select,
+.contact__field select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%230062CC'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.2rem;
+}
+
+.form-group textarea,
+.contact__field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Burbuja de Previsualización de WhatsApp en Vivo */
+.contact__preview {
+  background: #F0FDF4;
+  border: 1.5px dashed #22C55E;
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
+}
+
+.contact__preview-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #15803D;
+  margin-bottom: 0.4rem;
+}
+
+#waPreviewText,
+.contact__preview p {
+  font-size: 0.88rem;
+  color: #14532D;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+/* Botón Enviar Cotización WhatsApp */
+#btnSendWa,
+.contact__form .btn--wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.38);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+#btnSendWa:hover,
+.contact__form .btn--wa:hover {
+  background: linear-gradient(135deg, #2EE872 0%, #15A090 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.48);
+}
+
+@media (max-width: 900px) {
+  .contact__content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .contact__form {
+    padding: 1.75rem 1.25rem;
+  }
+}

@@ -1,0 +1,85 @@
+/* ==========================================================================
+   GH SERVICIOS TÉCNICOS — STATS BAR (HIGH CONTRAST & VISIBILITY)
+   ========================================================================== */
+
+.stats {
+  position: relative;
+  background: #BAC7D5;
+  padding: 3.5rem 0;
+  border-top: 1px solid rgba(0, 98, 204, 0.14);
+  border-bottom: 1px solid rgba(0, 98, 204, 0.14);
+}
+
+.stats__wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.stat-card,
+.stats__item {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 98, 204, 0.16);
+  box-shadow: 0 8px 24px rgba(9, 26, 68, 0.06);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover,
+.stats__item:hover {
+  transform: translateY(-4px);
+  border-color: #0062CC;
+  box-shadow: 0 14px 35px rgba(0, 98, 204, 0.15);
+}
+
+.stat-card__num,
+.stats__num {
+  font-family: var(--font-mono, monospace);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  color: #0062CC;
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.stat-card__unit {
+  font-family: var(--font-mono, monospace);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  color: #00B8FF;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+.stat-card__label,
+.stats__label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

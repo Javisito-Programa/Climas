@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mabeBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E8ECEF"/>
+      <stop offset="100%" stop-color="#D0D7DE"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A2533"/>
+      <stop offset="100%" stop-color="#0F1722"/>
+    </linearGradient>
+    <linearGradient id="glassLid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2C3E50" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1A252F" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="drumGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0062CC" stop-opacity="0.1"/>
+    </linearGradient>
+    <filter id="dropGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#0062CC" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Ambient -->
+  <rect width="400" height="400" rx="24" fill="#F4F7FA"/>
+  <circle cx="200" cy="200" r="140" fill="url(#drumGlow)"/>
+
+  <!-- Washer Body -->
+  <g filter="url(#dropGlow)">
+    <!-- Base Cabinet -->
+    <rect x="90" y="65" width="220" height="280" rx="20" fill="url(#mabeBody)" stroke="#CBD5E1" stroke-width="2"/>
+    
+    <!-- Top Cap / Slanted Deck -->
+    <path d="M 88 120 L 105 70 L 295 70 L 312 120 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.5"/>
+    
+    <!-- Glass Lid -->
+    <rect x="115" y="78" width="170" height="110" rx="14" fill="url(#glassLid)" stroke="#475569" stroke-width="2"/>
+    <ellipse cx="200" cy="133" rx="55" ry="40" fill="#0B131E" stroke="#00D2FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+    
+    <!-- Drum Center / Agitator view -->
+    <circle cx="200" cy="133" r="22" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/>
+    <path d="M 200 115 L 200 151 M 184 133 L 216 133" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Lid Handle -->
+    <rect x="160" y="194" width="80" height="7" rx="3.5" fill="#94A3B8"/>
+    
+    <!-- Control Panel at Top Back -->
+    <rect x="108" y="45" width="184" height="36" rx="8" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- Rotary Dial -->
+    <circle cx="200" cy="63" r="13" fill="#38BDF8" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="200" cy="63" r="4" fill="#0F172A"/>
+    
+    <!-- LED Indicators & Buttons -->
+    <circle cx="130" cy="63" r="3" fill="#22C55E"/>
+    <circle cx="142" cy="63" r="3" fill="#00D2FF"/>
+    <circle cx="154" cy="63" r="3" fill="#00D2FF"/>
+    <rect x="235" y="58" width="22" height="10" rx="3" fill="#0062CC"/>
+    <rect x="264" y="58" width="16" height="10" rx="3" fill="#EF4444"/>
+
+    <!-- Front Badge (Mabe Aqua Saver) -->
+    <rect x="150" y="225" width="100" height="28" rx="6" fill="#FFFFFF" stroke="#0062CC" stroke-width="1"/>
+    <text x="200" y="243" font-family="'Sora', sans-serif" font-size="10" font-weight="800" fill="#0062CC" text-anchor="middle" letter-spacing="1">MABE 22 KG</text>
+
+    <!-- Eco Saver Green Leaf Tag -->
+    <rect x="140" y="265" width="120" height="20" rx="10" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/>
+    <text x="200" y="279" font-family="'Sora', sans-serif" font-size="9" font-weight="700" fill="#15803D" text-anchor="middle">AQUA SAVER GREEN</text>
+    
+    <!-- Feet -->
+    <rect x="105" y="342" width="28" height="10" rx="3" fill="#334155"/>
+    <rect x="267" y="342" width="28" height="10" rx="3" fill="#334155"/>
+  </g>
+</svg>
