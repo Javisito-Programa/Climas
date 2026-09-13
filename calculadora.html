@@ -169,10 +169,10 @@
         <section class="calculator-section" id="calculator" style="padding: 2rem 0 5rem;">
             <div class="container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 var(--container-px);">
                 
-                <div class="calc-layout" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; align-items: start;">
+                <div class="calc-layout">
                     
                     <!-- Formulario de Parámetros -->
-                    <div class="calc-inputs-card" style="background: #FFFFFF; border-radius: 24px; border: 1px solid rgba(0,98,204,0.12); padding: 2.2rem; box-shadow: 0 10px 35px rgba(9,17,36,0.05);">
+                    <div class="calc-inputs-card">
                         <h2 style="font-size: 1.35rem; font-weight: 800; color: #091124; margin-bottom: 1.5rem;">
                             1. Dimensiones y Condiciones del Espacio
                         </h2>
@@ -196,7 +196,7 @@
                             <label style="font-size: 0.9rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.75rem;">
                                 Exposición al Sol en Techo / Losa:
                             </label>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                            <div class="calc-sun-options">
                                 <label class="calc-radio-label" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem; border: 1px solid #E2E8F0; border-radius: 12px; cursor: pointer;">
                                     <input type="radio" name="sun" value="high" checked style="accent-color: #0062CC;">
                                     <div>
@@ -240,7 +240,7 @@
                     </div>
 
                     <!-- Tarjeta de Resultado Dinámica -->
-                    <div class="calc-result-card" style="background: linear-gradient(135deg, #071B38, #0047AB, #0066FF); border-radius: 24px; padding: 2.5rem; color: #FFFFFF; box-shadow: 0 15px 40px rgba(0, 71, 171, 0.3); position: sticky; top: 6rem;">
+                    <div class="calc-result-card">
                         <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; color: #00D2FF; text-transform: uppercase;">DIAGNÓSTICO TÉRMICO GH</span>
                         <div style="margin: 1rem 0;">
                             <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Capacidad Sugerida:</div>

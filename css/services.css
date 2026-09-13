@@ -53,8 +53,9 @@
 /* Grilla de Servicios */
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1.75rem;
+  width: 100%;
 }
 
 .service-card,
@@ -193,5 +194,18 @@
   }
   .services__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card,
+  .services__card {
+    padding: 1.5rem 1.1rem;
+    border-radius: 18px;
+  }
+  .service-card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
   }
 }

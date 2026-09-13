@@ -109,15 +109,64 @@
 
 .calc__actions{display:flex;flex-direction:column;gap:0.85rem}
 
-@media(max-width:900px){
-  .calc__grid{grid-template-columns:1fr;gap:1.75rem}
+/* Layout de la página calculadora.html */
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.calc-inputs-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(0,98,204,0.12);
+  padding: 2.2rem;
+  box-shadow: 0 10px 35px rgba(9,17,36,0.05);
+}
+
+.calc-result-card {
+  background: linear-gradient(135deg, #071B38, #0047AB, #0066FF);
+  border-radius: 24px;
+  padding: 2.5rem;
+  color: #FFFFFF;
+  box-shadow: 0 15px 40px rgba(0, 71, 171, 0.3);
+  position: sticky;
+  top: 6rem;
+}
+
+.calc-sun-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media(max-width:960px){
+  .calc__grid,
+  .calc-layout{
+    grid-template-columns:1fr;
+    gap:2rem;
+  }
+  .calc-result-card{
+    position: static;
+    top: auto;
+  }
+}
+
+@media(max-width:540px){
+  .calc-sun-options {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
 }
 
 @media(max-width:480px){
   .calc__card,
-  .calc__result{
-    padding:1.35rem 1rem;
-    border-radius:16px;
+  .calc__result,
+  .calc-inputs-card,
+  .calc-result-card{
+    padding:1.4rem 1.1rem;
+    border-radius:18px;
   }
   .calc__options{
     grid-template-columns:1fr;

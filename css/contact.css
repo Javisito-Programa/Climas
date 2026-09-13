@@ -270,3 +270,24 @@
     padding: 1.75rem 1.25rem;
   }
 }
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 3.5rem 0 4.5rem;
+  }
+  .contact__info-card {
+    padding: 1.25rem 1rem;
+    border-radius: 18px;
+  }
+  .contact__form {
+    padding: 1.35rem 1rem;
+    border-radius: 20px;
+  }
+  .contact__info-link {
+    font-size: 1.1rem;
+    word-break: break-word;
+  }
+  .contact__preview {
+    padding: 1rem 0.85rem;
+  }
+}
