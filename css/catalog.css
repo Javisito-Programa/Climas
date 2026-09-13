@@ -506,3 +506,49 @@
   color: #091124;
   font-weight: 600;
 }
+
+/* --- Catalog Responsive Queries --- */
+@media (max-width: 860px) {
+  .catalog__filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .catalog__search-box {
+    min-width: 100%;
+    width: 100%;
+  }
+  .catalog__tabs {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+  .catalog__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .catalog__filters-bar {
+    padding: 0.85rem 1rem;
+    border-radius: 16px;
+  }
+  .catalog-tab {
+    font-size: 0.78rem;
+    padding: 0.45rem 0.85rem;
+  }
+  .spec-modal {
+    padding: 1.5rem 1.1rem;
+    width: 94%;
+    border-radius: 18px;
+  }
+  .spec-modal__table {
+    font-size: 0.8rem;
+  }
+  .spec-modal__table th,
+  .spec-modal__table td {
+    padding: 0.55rem 0.6rem;
+  }
+}
