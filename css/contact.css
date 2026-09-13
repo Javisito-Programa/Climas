@@ -56,6 +56,8 @@
   grid-template-columns: 0.95fr 1.05fr;
   gap: 2.5rem;
   align-items: start;
+  min-width: 0;
+  width: 100%;
 }
 
 /* Columna Izquierda: Tarjetas de Información */
@@ -63,6 +65,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  min-width: 0;
+  width: 100%;
 }
 
 .contact__info-card {
@@ -72,6 +76,9 @@
   padding: 1.75rem 2rem;
   box-shadow: 0 8px 24px rgba(9, 26, 68, 0.06);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact__info-card:hover {
@@ -104,7 +111,59 @@
   font-size: 0.88rem;
   color: #475569;
   line-height: 1.55;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.95rem;
+}
+
+/* Botón interactivo para enviar mensaje */
+.contact__btn-msg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contact__btn-msg:hover {
+  background: linear-gradient(135deg, #2EE872 0%, #15A090 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+/* Botón interactivo para llamada telefónica */
+.contact__btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #0062CC 0%, #0088FF 100%);
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 98, 204, 0.3);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contact__btn-call:hover {
+  background: linear-gradient(135deg, #0073F0 0%, #00A3FF 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 98, 204, 0.4);
 }
 
 .contact__info-link {
@@ -131,6 +190,9 @@
   border: 1px solid rgba(0, 98, 204, 0.16);
   padding: 2.5rem;
   box-shadow: 0 12px 35px rgba(9, 26, 68, 0.08);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact__form h3 {
@@ -213,6 +275,11 @@
   padding: 1.25rem;
   margin: 1.5rem 0;
   box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .contact__preview-label {
@@ -231,6 +298,11 @@
   color: #14532D;
   line-height: 1.55;
   font-weight: 500;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+  white-space: pre-wrap;
 }
 
 /* Botón Enviar Cotización WhatsApp */
@@ -241,10 +313,12 @@
   justify-content: center;
   gap: 0.6rem;
   width: 100%;
-  padding: 1rem 1.5rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem 1.25rem;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #FFFFFF;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 800;
   border-radius: 14px;
   border: none;
@@ -252,6 +326,9 @@
   box-shadow: 0 6px 22px rgba(37, 211, 102, 0.38);
   transition: all 0.25s ease;
   text-decoration: none;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
 }
 
 #btnSendWa:hover,
@@ -273,21 +350,37 @@
 
 @media (max-width: 480px) {
   .contact {
-    padding: 3.5rem 0 4.5rem;
+    padding: 3rem 0 4rem;
   }
   .contact__info-card {
     padding: 1.25rem 1rem;
     border-radius: 18px;
   }
   .contact__form {
-    padding: 1.35rem 1rem;
-    border-radius: 20px;
+    padding: 1.25rem 0.9rem;
+    border-radius: 18px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.88rem;
+  }
+  #btnSendWa,
+  .contact__form .btn--wa {
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+  }
+  .contact__btn-msg,
+  .contact__btn-call {
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
   }
   .contact__info-link {
     font-size: 1.1rem;
     word-break: break-word;
   }
   .contact__preview {
-    padding: 1rem 0.85rem;
+    padding: 0.85rem 0.75rem;
   }
 }

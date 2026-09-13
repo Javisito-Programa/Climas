@@ -1,116 +1,103 @@
-/* ===== Contact Form → WhatsApp ===== */
+/* ===== GH Servicios Técnicos — Contact Form → WhatsApp ===== */
 export function initContact() {
-  const form = document.getElementById('contact-form');
-  const successEl = document.getElementById('contact-ok');
+  const form = document.getElementById('contactForm') || document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    const name = form.querySelector('#c-name').value.trim();
-    const phone = form.querySelector('#c-phone').value.trim();
-    const service = form.querySelector('#c-service').value;
-    const msg = form.querySelector('#c-msg').value.trim();
-
-    // Build WhatsApp message
-    let waText = `Hola, soy ${name}.\n`;
-    waText += `📱 Tel: ${phone}\n`;
-    waText += `🔧 Servicio: ${service}\n`;
-    if (msg) waText += `💬 ${msg}`;
-
-    const waUrl = `https://wa.me/529371037277?text=${encodeURIComponent(waText)}`;
-
-    // Show success animation
-    if (successEl) {
-      successEl.setAttribute('aria-hidden', 'false');
-      setTimeout(() => {
-        window.open(waUrl, '_blank');
-        // Reset after a moment
-        setTimeout(() => {
-          successEl.setAttribute('aria-hidden', 'true');
-          form.reset();
-          clearErrors();
-        }, 2000);
-      }, 1200);
-    } else {
-      window.open(waUrl, '_blank');
-    }
-  });
-
-  function validate() {
-    let valid = true;
-    clearErrors();
-
-    const name = form.querySelector('#c-name');
-    const phone = form.querySelector('#c-phone');
-    const service = form.querySelector('#c-service');
-
-    if (!name.value.trim()) {
-      showError('err-name', 'Ingresa tu nombre', name);
-      valid = false;
-    }
-
-    if (!phone.value.trim() || phone.value.trim().length < 7) {
-      showError('err-phone', 'Ingresa un teléfono válido', phone);
-      valid = false;
-    }
-
-    if (!service.value) {
-      showError('err-service', 'Selecciona un servicio', service);
-      valid = false;
-    }
-
-    return valid;
-  }
-
-  function showError(id, msg, field) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = msg;
-    field?.closest('.contact__field')?.classList.add('has-error');
-  }
-
-  function clearErrors() {
-    form.querySelectorAll('.contact__err').forEach(el => el.textContent = '');
-    form.querySelectorAll('.has-error').forEach(el => el.classList.remove('has-error'));
-  }
-
-  const previewEl = document.getElementById('contact-bubble-preview');
+  const nameInput = form.querySelector('#c-name');
+  const colInput = form.querySelector('#c-colonia') || form.querySelector('#c-phone');
+  const servSelect = form.querySelector('#c-service');
+  const notesInput = form.querySelector('#c-notes') || form.querySelector('#c-msg');
+  const previewText = document.getElementById('waPreviewText') || document.getElementById('contact-bubble-preview');
+  const btnSend = form.querySelector('#btnSendWa') || form.querySelector('button[type="submit"]');
 
   function updatePreview() {
-    if (!previewEl) return;
-    const name = form.querySelector('#c-name')?.value.trim() || 'Tu nombre';
-    const phone = form.querySelector('#c-phone')?.value.trim() || 'Tu teléfono';
-    const service = form.querySelector('#c-service')?.value || 'Servicio a elegir';
-    const msg = form.querySelector('#c-msg')?.value.trim();
+    if (!previewText) return;
+    const name = nameInput?.value.trim() || '';
+    const colonia = colInput?.value.trim() || '';
+    const serviceText = servSelect && servSelect.selectedIndex >= 0 ? servSelect.options[servSelect.selectedIndex].text : 'Servicio general';
+    const notes = notesInput?.value.trim() || '';
 
-    let html = `Hola GH Servicios Técnicos 👋<br>`;
-    html += `• Nombre: <strong>${escapeHtml(name)}</strong><br>`;
-    html += `• Teléfono: <strong>${escapeHtml(phone)}</strong><br>`;
-    html += `• Servicio: <strong>${escapeHtml(service)}</strong>`;
-    if (msg) {
-      html += `<br>• Detalle: <em>"${escapeHtml(msg)}"</em>`;
+    if (!name && !colonia) {
+      previewText.textContent = 'Hola GH Servicios Técnicos, me gustaría cotizar un servicio...';
+      return;
     }
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    html += `<small>${timeStr} · Listo para enviar ✓✓</small>`;
-    previewEl.innerHTML = html;
+
+    let text = `Hola GH Servicios Técnicos 👋 Me gustaría cotizar:\n`;
+    if (name) text += `• Nombre: ${name}\n`;
+    if (colonia) text += `• Ubicación: ${colonia}\n`;
+    text += `• Servicio: ${serviceText}\n`;
+    if (notes) text += `• Detalles: ${notes}\n`;
+    text += `¿Tienen disponibilidad para visita técnica en Cárdenas / Tabasco?`;
+
+    previewText.textContent = text;
   }
 
-  function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-
-  // Clear field error and update preview on input
-  form.querySelectorAll('input, select, textarea').forEach(field => {
-    field.addEventListener('input', () => {
-      field.closest('.contact__field')?.classList.remove('has-error');
-      const errEl = field.closest('.contact__field')?.querySelector('.contact__err');
-      if (errEl) errEl.textContent = '';
-      updatePreview();
-    });
+  // Real-time preview updates
+  form.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('input', updatePreview);
     field.addEventListener('change', updatePreview);
   });
-
   updatePreview();
+
+  function handleSubmit(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    const name = nameInput?.value.trim() || '';
+    const colonia = colInput?.value.trim() || '';
+    const serviceText = servSelect && servSelect.selectedIndex >= 0 ? servSelect.options[servSelect.selectedIndex].text : 'Servicio a domicilio';
+    const notes = notesInput?.value.trim() || '';
+
+    if (!name) {
+      alert('Por favor, ingresa tu nombre completo.');
+      nameInput?.focus();
+      return;
+    }
+
+    if (!colonia) {
+      alert('Por favor, indica tu colonia o municipio en Tabasco.');
+      colInput?.focus();
+      return;
+    }
+
+    let waMsg = `¡Hola GH Servicios Técnicos! 👋 Deseo solicitar una cotización:\n\n`;
+    waMsg += `👤 *Nombre:* ${name}\n`;
+    waMsg += `📍 *Ubicación / Colonia:* ${colonia}\n`;
+    waMsg += `🛠️ *Servicio requerido:* ${serviceText}\n`;
+    if (notes) {
+      waMsg += `📝 *Detalles:* ${notes}\n`;
+    }
+    waMsg += `\n¿Me podrían dar presupuesto y disponibilidad para una visita técnica? Muchas gracias.`;
+
+    const waUrl = `https://wa.me/529371037277?text=${encodeURIComponent(waMsg)}`;
+
+    if (btnSend) {
+      const originalHtml = btnSend.innerHTML;
+      btnSend.innerHTML = '<span>✓ ¡Abriendo WhatsApp con tus datos...!</span>';
+      btnSend.style.background = '#128C7E';
+      setTimeout(() => {
+        btnSend.innerHTML = originalHtml;
+        btnSend.style.background = '';
+      }, 4000);
+    }
+
+    // Direct redirect to WhatsApp
+    const win = window.open(waUrl, '_blank');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = waUrl;
+    }
+  }
+
+  form.addEventListener('submit', handleSubmit);
+  if (btnSend) {
+    btnSend.addEventListener('click', (e) => {
+      // If within a form, let submit handle it, but fallback if not prevented
+      if (form.checkValidity && !form.checkValidity()) {
+        return; // Native HTML validation tooltip
+      }
+      handleSubmit(e);
+    });
+  }
 }
